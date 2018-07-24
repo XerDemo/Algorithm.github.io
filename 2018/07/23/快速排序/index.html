@@ -11,23 +11,27 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no" />
-<meta name="author" content="John Doe" />
+<meta name="author" content="XerDemo" />
 
 
 
+<meta name="description" content="本文将介绍从一路快速排序，二路快速排序，三路快速排序一步步实现以及优化的过程">
+<meta name="keywords" content="Algorithm,排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快速排序">
+<meta property="og:title" content="快速排序Quick Sort(一路快排，二路快排，三路快排)">
 <meta property="og:url" content="http://yoursite.com/2018/07/23/快速排序/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="The beauty of programming">
+<meta property="og:description" content="本文将介绍从一路快速排序，二路快速排序，三路快速排序一步步实现以及优化的过程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-23T09:54:07.276Z">
+<meta property="og:updated_time" content="2018-07-24T05:25:51.207Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快速排序">
+<meta name="twitter:title" content="快速排序Quick Sort(一路快排，二路快排，三路快排)">
+<meta name="twitter:description" content="本文将介绍从一路快速排序，二路快速排序，三路快速排序一步步实现以及优化的过程">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="The beauty of programming" type="application/atom+xml">
 
 
 
@@ -54,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>快速排序 | Hexo</title>
+<title>快速排序Quick Sort(一路快排，二路快排，三路快排) | The beauty of programming</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -70,7 +74,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: false
     }
 </script>
 
@@ -97,7 +101,7 @@
             <img src="/img/avatar.png" class="animated zoomIn">
         </a>
         <hgroup>
-          <h1 class="header-author"><a href="/">John Doe</a></h1>
+          <h1 class="header-author"><a href="/">XerDemo</a></h1>
         </hgroup>
 
         
@@ -166,7 +170,7 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" href="/1492113422@qq.com" title="Email"></a>
                             
                                 <a class="fa GitHub" href="#" title="GitHub"></a>
                             
@@ -187,7 +191,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li></ul>
                     </div>
                 </section>
                 
@@ -222,7 +226,7 @@
       <nav id="mobile-nav">
       <div class="overlay">
           <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">John Doe</a></h1>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">XerDemo</a></h1>
       </div>
     <div class="intrude-less">
         <header id="header" class="inner">
@@ -230,7 +234,7 @@
                 <img src="/img/avatar.png" class="animated zoomIn">
             </a>
             <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">John Doe</a></h1>
+              <h1 class="header-author"><a href="/" title="回到主页">XerDemo</a></h1>
             </hgroup>
             
             <nav class="header-menu">
@@ -250,7 +254,7 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="/1492113422@qq.com" title="Email"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
                             
@@ -289,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      快速排序
+      快速排序Quick Sort(一路快排，二路快排，三路快排)
     </h1>
   
 
@@ -297,8 +301,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -306,7 +318,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>本文将介绍从一路快速排序，二路快速排序，三路快速排序一步步实现以及优化的过程<a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<p>基本思想：每次从当前待排序序列中选取一个元素作为基准(pivot)，这里我们选取的元素是4，之后想办法把4(基准)挪到排好序时，应该所处的位置，此时4(基准)之前的元素是小于4的，4之后的元素是大于4的，对小于4(基准)的序列和大于4(基准)的序列分别使用快速排序逐渐递归下去，完成整个排序过程</p>
+</the>
       
     </div>
     
@@ -314,13 +330,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/23/快速排序/">快速排序</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">John Doe</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/23/快速排序/">快速排序Quick Sort(一路快排，二路快排，三路快排)</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
         <p><span>发布时间:</span>2018-07-23, 17:54:07</p>
-        <p><span>最后更新:</span>2018-07-23, 17:54:07</p>
+        <p><span>最后更新:</span>2018-07-24, 13:25:51</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/23/快速排序/" title="快速排序">http://yoursite.com/2018/07/23/快速排序/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/23/快速排序/　　作者: John Doe" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/23/快速排序/" title="快速排序Quick Sort(一路快排，二路快排，三路快排)">http://yoursite.com/2018/07/23/快速排序/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/23/快速排序/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -329,6 +345,17 @@
     </div>
 
 
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/07/24/直接插入排序/">
+                    直接插入排序
+                </a>
+            </div>
+        
+        
+    </nav>
 
   
 </article>
@@ -372,7 +399,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"快速排序　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"快速排序Quick Sort(一路快排，二路快排，三路快排)　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -392,7 +419,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/07/24/直接插入排序/" title="上一篇: 直接插入排序">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -402,7 +431,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/23/快速排序/">快速排序</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/直接插入排序/">直接插入排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/23/快速排序/">快速排序Quick Sort(一路快排，二路快排，三路快排)</a></li></ul>
 
 
 
@@ -416,7 +445,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2018 John Doe
+                2018 XerDemo
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
