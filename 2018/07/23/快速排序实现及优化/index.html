@@ -18,15 +18,16 @@
 <meta name="description" content="本文将介绍从一路快速排序，二路快速排序，三路快速排序一步步实现以及优化的过程">
 <meta name="keywords" content="排序,分治法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快速排序Quick Sort(一路快排，二路快排，三路快排)">
+<meta property="og:title" content="快速排序实现及优化">
 <meta property="og:url" content="http://yoursite.com/2018/07/23/快速排序实现及优化/index.html">
 <meta property="og:site_name" content="The beauty of programming">
 <meta property="og:description" content="本文将介绍从一路快速排序，二路快速排序，三路快速排序一步步实现以及优化的过程">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/07/23/快速排序实现及优化/QuickSort1.png">
-<meta property="og:updated_time" content="2018-07-24T06:09:30.606Z">
+<meta property="og:image" content="http://yoursite.com/2018/07/23/快速排序实现及优化/QuickOneWays.png">
+<meta property="og:updated_time" content="2018-07-24T08:40:35.372Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快速排序Quick Sort(一路快排，二路快排，三路快排)">
+<meta name="twitter:title" content="快速排序实现及优化">
 <meta name="twitter:description" content="本文将介绍从一路快速排序，二路快速排序，三路快速排序一步步实现以及优化的过程">
 <meta name="twitter:image" content="http://yoursite.com/2018/07/23/快速排序实现及优化/QuickSort1.png">
 
@@ -60,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>快速排序Quick Sort(一路快排，二路快排，三路快排) | The beauty of programming</title>
+<title>快速排序实现及优化 | The beauty of programming</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -295,7 +296,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      快速排序Quick Sort(一路快排，二路快排，三路快排)
+      快速排序实现及优化
     </h1>
   
 
@@ -323,7 +324,12 @@
         <p><excerpt in="" index="" |="" 首页摘要=""><br>本文将介绍从一路快速排序，二路快速排序，三路快速排序一步步实现以及优化的过程<a id="more"></a></excerpt></p>
 <p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
 <h2 id="Quick-Sort-基本思想"><a href="#Quick-Sort-基本思想" class="headerlink" title="Quick Sort 基本思想"></a>Quick Sort 基本思想</h2><p><strong><code>基本思想</code></strong>：每次从当前待排序序列中选取一个元素作为<strong><code>基准</code></strong>(pivot)，如下图所示，这里我们选取的元素是4，之后想办法把4(基准)挪到整个序列排好序时应该所处的位置，此时4(基准)之前的元素是小于4的，4之后的元素是大于4的，对小于4(基准)的序列和大于4(基准)的序列分别使用快速排序逐渐<strong><code>递归</code></strong>下去，完成整个排序过程。   </p>
-<p><img src="/2018/07/23/快速排序实现及优化/QuickSort1.png" alt=""></p>
+<div align="center" style="zoom: 50%; margin:  0px auto;"><img src="/2018/07/23/快速排序实现及优化/QuickSort1.png" alt="原理"></div><br><strong><code>图片相关参数介绍：</code></strong><br>- v: 基准<br>- l: 也就是left<br>- r: 也就是right<br>- i: 当前访问的元素<br>- j: 记录大于v(基准)小于v的分界点<br><br><br>## 一路快速排序<br><br>将把序列分成两个部分的过程称为<strong><code>Partition</code></strong>,一般将数组的第一个元素作为基准（<strong><code>基准的选取</code></strong>影响了整个程序的效率，有<a href="https://blog.csdn.net/liuyi1207164339/article/details/50827608" target="_blank" rel="noopener">三种选取方法</a>）<br>从left + 1 位置开始遍历序列，将序列分成小于v的部分和大于v的部分<br><div align="center" style="zoom: 50%; margin:  0px auto;"><img src="/2018/07/23/快速排序实现及优化/QuickOneWays.png" alt="原理"></div>
+
+
+
+
+
 
       
     </div>
@@ -332,12 +338,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/23/快速排序实现及优化/">快速排序Quick Sort(一路快排，二路快排，三路快排)</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/23/快速排序实现及优化/">快速排序实现及优化</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
         <p><span>发布时间:</span>2018-07-23, 17:54:07</p>
-        <p><span>最后更新:</span>2018-07-24, 14:09:30</p>
+        <p><span>最后更新:</span>2018-07-24, 16:40:35</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/23/快速排序实现及优化/" title="快速排序Quick Sort(一路快排，二路快排，三路快排)">http://yoursite.com/2018/07/23/快速排序实现及优化/</a>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/23/快速排序实现及优化/" title="快速排序实现及优化">http://yoursite.com/2018/07/23/快速排序实现及优化/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/23/快速排序实现及优化/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -390,7 +396,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"快速排序Quick Sort(一路快排，二路快排，三路快排)　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"快速排序实现及优化　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -420,7 +426,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/23/快速排序实现及优化/">快速排序Quick Sort(一路快排，二路快排，三路快排)</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/23/快速排序实现及优化/">快速排序实现及优化</a></li></ul>
 
 
 
