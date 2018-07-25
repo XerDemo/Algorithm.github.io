@@ -34,7 +34,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/07/23/快速排序实现及优化/QuickSort8.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/23/快速排序实现及优化/QuickSort9.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/23/快速排序实现及优化/QuickSort10.png">
-<meta property="og:updated_time" content="2018-07-25T09:35:21.461Z">
+<meta property="og:image" content="http://yoursite.com/2018/07/23/快速排序实现及优化/QuickSort11.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/23/快速排序实现及优化/QuickSort2.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/23/快速排序实现及优化/QuickSort12.png">
+<meta property="og:updated_time" content="2018-07-25T10:09:21.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速排序实现及优化">
 <meta name="twitter:description" content="本文将介绍从一路快速排序，二路快速排序，三路快速排序一步步实现以及优化的过程">
@@ -335,7 +338,7 @@
 <h2 id="Quick-Sort-基本思想"><a href="#Quick-Sort-基本思想" class="headerlink" title="Quick Sort 基本思想"></a>Quick Sort 基本思想</h2><p><strong><code>基本思想</code></strong>：每次从当前待排序序列中选取一个元素作为<strong><code>基准</code></strong>(pivot)，如下图所示，这里我们选取的元素是4，之后想办法把4(基准)挪到整个序列排好序时应该所处的位置，此时4(基准)之前的元素是小于4的，4之后的元素是大于4的，对小于4(基准)的序列和大于4(基准)的序列分别使用快速排序逐渐<strong><code>递归</code></strong>下去，完成整个排序过程。   </p>
 <div align="center" style="zoom: 50%; margin:  0px auto;"><img src="/2018/07/23/快速排序实现及优化/QuickSort1.png" alt="原理"></div>
 
-<p><strong><code>图片相关参数介绍：</code></strong></p>
+<p><strong><code>一路快速排序图片相关参数介绍：</code></strong></p>
 <ul>
 <li>v: 基准</li>
 <li>l: 也就是left </li>
@@ -379,8 +382,28 @@
 <div align="center" style="zoom: 50%; margin:  0px auto;"><img src="/2018/07/23/快速排序实现及优化/QuickSort9.png" alt=""></div>
 
 <p>随着<strong><code>基准选取的不同</code></strong>,快速排序的效率也受到了影响，当<strong><code>基准</code></strong>能把原序列换分成<strong><code>均匀</code></strong>的两个子序列时，每一次递归层次上比较的次数都是<strong><code>O(N)</code></strong>次，而递归的深度是 <strong><code>log2^N</code></strong> (每次都是将原始序列分一半，即一直除2)，最好的情况下时间复杂度应为<strong><code>O(Nlog2^N)</code></strong>,最坏的情况下，即基准每次是第一个元素，用因为是有序的，比基准小的元素没有，只有比基准大的元素，每次划分序列都近似于1和N-1，划分极度不均匀，像一个单链表，导致时间复杂度为<strong><code>O(N^2)</code></strong>,最坏情况下，快速排序图解如下：</p>
-<p><div align="center" style="zoom: 50%; margin:  0px auto;"><img src="/2018/07/23/快速排序实现及优化/QuickSort10.png" alt=""></div><br>其中<strong><code>空间复杂度为O(log2^N)</code></strong>，递归的深度为log2^N，系统栈需要压入log2^N种状态，需要空间O(log2^N),在快排过程种定义的left,right…,都是常数级需要空间O(1),总共耗费空间O(log2^N) * O(1)。<br>这里解释下我为什么基准选取随机数：最坏的情况下，数组完全有序，每次选中最左边的元素，$ \frac{1}{n} \times \cfrac{1}{n-1} \times \cfrac{1}{n-2} \times….. \cfrac{1}{1} $ 当n无穷大时，出现最坏情况的概率接近于0</p>
-<h2 id="二路快速排序"><a href="#二路快速排序" class="headerlink" title="二路快速排序"></a>二路快速排序</h2><p>当我在一路快速排序已经进行优化的代码中，把数组规模再<strong><code>扩大10倍</code></strong>，Clion运行结果如下:</p>
+<div align="center" style="zoom: 50%; margin:  0px auto;"><img src="/2018/07/23/快速排序实现及优化/QuickSort10.png" alt=""></div>
+
+<p>其中<strong><code>空间复杂度为O(log2^N)</code></strong>，递归的深度为log2^N，系统栈需要压入log2^N种状态，需要空间O(log2^N),在快排过程种定义的left,right…,都是常数级需要空间O(1),总共耗费空间O(log2^N) * O(1)。<br>这里解释下我为什么基准选取随机数：最坏的情况下，数组完全有序，每次选中最左边的元素，$ \frac{1}{n} \times \cfrac{1}{n-1} \times \cfrac{1}{n-2} \times….. \cfrac{1}{1} $ 当n无穷大时，出现最坏情况的概率接近于0</p>
+<h2 id="二路快速排序"><a href="#二路快速排序" class="headerlink" title="二路快速排序"></a>二路快速排序</h2><p>当我在一路快速排序已经进行优化的代码中（基准选取得当解决了近乎有序数组的问题），把数组规模再<strong><code>扩大10倍</code></strong>，Clion运行结果如下:</p>
+<div align="center" style="zoom: 90%; margin:  0px auto;"><img src="/2018/07/23/快速排序实现及优化/QuickSort11.png" alt=""></div>
+
+<p>从数据观察到，含有大量重复元素时，快速排序算法的复杂度似乎又退化到了<strong><code>O(N^2)</code></strong>，这是因为我们之前并没有算当前元素<strong><code>e==v</code></strong>这种情况，如图：</p>
+<div align="center" style="zoom: 50%; margin:  0px auto;"><img src="/2018/07/23/快速排序实现及优化/QuickSort2.png" alt="原理"></div>
+
+<p>假设此时我们把e==V 放在<strong><code>黄色</code></strong>区域,或者把e==v放在<strong><code>紫色</code></strong>区域,最后都会变成这样：</p>
+<div align="center" style="zoom: 50%; margin:  0px auto;"><img src="/2018/07/23/快速排序实现及优化/QuickSort12.png" alt="原理"></div>
+
+<p>partition这个过程极有可能将序列分为<strong><code>极度不平衡</code></strong>的两个子序列，而最好的情况是划分为均匀的两个序列O(log2^N)，<strong>此时的情况更接近于最坏的情况<code>O(N^2)</code></strong>， 如何解决这个问题呢？ <strong><code>二路快速排序</code></strong>由此而来.</p>
+<p><strong><code>二路快速排序图片相关参数介绍：</code></strong></p>
+<ul>
+<li>v: 基准</li>
+<li>l: 也就是left </li>
+<li>r: 也就是right </li>
+<li>e: 当前所指向元素</li>
+<li>i: 记录小于V这一端即将要扫描的位置(向右)</li>
+<li>j: 记录大于V这一端即将要扫描的位置(向左)</li>
+</ul>
 
       
     </div>
@@ -392,7 +415,7 @@
         <p><span>本文标题:</span><a href="/2018/07/23/快速排序实现及优化/">快速排序实现及优化</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
         <p><span>发布时间:</span>2018-07-23, 17:54:07</p>
-        <p><span>最后更新:</span>2018-07-25, 17:35:21</p>
+        <p><span>最后更新:</span>2018-07-25, 18:09:21</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/23/快速排序实现及优化/" title="快速排序实现及优化">http://yoursite.com/2018/07/23/快速排序实现及优化/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/23/快速排序实现及优化/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
