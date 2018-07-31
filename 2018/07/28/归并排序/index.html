@@ -29,7 +29,8 @@
 <meta property="og:image" content="https://xerdemo.github.io/2018/07/28/归并排序/mergeSort4.png">
 <meta property="og:image" content="https://xerdemo.github.io/2018/07/28/归并排序/mergeSort5.png">
 <meta property="og:image" content="https://xerdemo.github.io/2018/07/28/归并排序/mergeSort6.png">
-<meta property="og:updated_time" content="2018-07-29T15:52:48.726Z">
+<meta property="og:image" content="https://xerdemo.github.io/2018/07/28/归并排序/mergeSort7.png">
+<meta property="og:updated_time" content="2018-07-30T01:04:01.115Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="归并排序(自顶向下，自底向上)">
 <meta name="twitter:description" content="本文将介绍从归并排序">
@@ -198,7 +199,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C实现/">C实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分查找/">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分治法/">分治法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分治法，快速排序/">分治法，快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/归并排序/">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C实现/">C实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分查找/">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冒泡排序/">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分治法/">分治法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分治法，快速排序/">分治法，快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/归并排序/">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插入排序/">插入排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简单插入排序/">简单插入排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/选择排序/">选择排序</a></li></ul>
                     </div>
                 </section>
                 
@@ -355,9 +356,12 @@
 <div align="center" style="zoom: 90%; margin:  0px auto;"><img src="/2018/07/28/归并排序/mergeSort6.png" alt="原理"></div>
 
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>将<strong><code>MergeSort1.c</code></strong>,<strong><code>MergeSort2.c</code></strong>,<strong><code>MergeSortBU.c</code></strong>更改为<strong><code>.h</code></strong>,新建<strong><code>Main.c</code></strong>如下：</p>
-<pre><code>
-</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>将<strong><code>MergeSort1.c</code></strong>,<strong><code>MergeSort2.c</code></strong>,<strong><code>MergeSortBU.c</code></strong>更改为<strong><code>.h</code></strong>,新建<strong><code>Main.c</code></strong>如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"SortHelper.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"MergeSort2.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"MergeSortBU.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="built_in">pow</span>(<span class="number">10</span>, <span class="number">8</span>);</span><br><span class="line">    <span class="comment">// 测试随机数组</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"test generateRandomArray, size = %d, random range [0, %d]\n"</span>, n, n);</span><br><span class="line">    <span class="keyword">int</span> *arr = generateRandomArray(n, <span class="number">0</span>, n);</span><br><span class="line">    <span class="keyword">int</span> *arr1 = copyArray(arr, n);</span><br><span class="line">    <span class="keyword">int</span> *arr2 = copyArray(arr, n);</span><br><span class="line">    <span class="keyword">int</span> *arr3 = copyArray(arr, n);</span><br><span class="line">    testSort(<span class="string">"mergeSort1"</span>, mergeSort1, arr, n);</span><br><span class="line">    testSort(<span class="string">"mergeSort2"</span>, mergeSort2, arr1, n);</span><br><span class="line">    testSort(<span class="string">"mergeSortBU"</span>, mergeSortBU, arr2, n);</span><br><span class="line">    testSort(<span class="string">"mergeSortBU2"</span>, mergeSortBU2, arr3, n);</span><br><span class="line">    <span class="built_in">free</span>(arr);<span class="built_in">free</span>(arr1);<span class="built_in">free</span>(arr2);<span class="built_in">free</span>(arr3);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 测试几乎有序的数组</span></span><br><span class="line">    <span class="keyword">int</span> swapTimes = <span class="number">100</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\ntest generateNearlyOrderArray, size = %d, sawpTimes = %d\n"</span>,n, swapTimes);</span><br><span class="line">    <span class="keyword">int</span> *arr4 = generateNearlyOrderArray(n, swapTimes);</span><br><span class="line">    <span class="keyword">int</span> *arr5 = copyArray(arr4, n);</span><br><span class="line">    <span class="keyword">int</span> *arr6 = copyArray(arr4, n);</span><br><span class="line">    <span class="keyword">int</span> *arr7 = copyArray(arr4, n);</span><br><span class="line">    testSort(<span class="string">"mergeSort1"</span>, mergeSort1, arr4, n);</span><br><span class="line">    testSort(<span class="string">"mergeSort2"</span>, mergeSort2, arr5, n);</span><br><span class="line">    testSort(<span class="string">"mergeSortBU"</span>, mergeSortBU, arr6, n);</span><br><span class="line">    testSort(<span class="string">"mergeSortBU2"</span>, mergeSortBU2, arr7, n);</span><br><span class="line">    <span class="built_in">free</span>(arr4);<span class="built_in">free</span>(arr5);<span class="built_in">free</span>(arr6);<span class="built_in">free</span>(arr7);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 测试含有大量重复元素的数组  n个数组 范围[0,10]</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\ntest generateRandomArray, size = %d, random range [0, %d]\n"</span>,n, <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">int</span> *arr8 = generateRandomArray(n, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">int</span> *arr9 = copyArray(arr8, n);</span><br><span class="line">    <span class="keyword">int</span> *arr10 = copyArray(arr8, n);</span><br><span class="line">    <span class="keyword">int</span> *arr11 = copyArray(arr8, n);</span><br><span class="line">    testSort(<span class="string">"mergeSort1"</span>, mergeSort1, arr8, n);</span><br><span class="line">    testSort(<span class="string">"mergeSort2"</span>, mergeSort2, arr9, n);</span><br><span class="line">    testSort(<span class="string">"mergeSortBU"</span>, mergeSortBU, arr10, n);</span><br><span class="line">    testSort(<span class="string">"mergeSortBU2"</span>, mergeSortBU2, arr11, n);</span><br><span class="line">    <span class="built_in">free</span>(arr8);<span class="built_in">free</span>(arr9);<span class="built_in">free</span>(arr10);<span class="built_in">free</span>(arr11);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>Clion运行结果如下</code></strong>,规模又扩大了10倍(1亿)</p>
+<div align="center" style="zoom: 90%; margin:  0px auto;"><img src="/2018/07/28/归并排序/mergeSort7.png" alt="原理"></div>
+
+<p><a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/09_%E6%8E%92%E5%BA%8F/02-MergeSort" target="_blank" rel="noopener">相关源代码下载链接</a></p>
+
       
     </div>
     
@@ -368,7 +372,7 @@
         <p><span>本文标题:</span><a href="/2018/07/28/归并排序/">归并排序(自顶向下，自底向上)</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
         <p><span>发布时间:</span>2018-07-28, 15:24:44</p>
-        <p><span>最后更新:</span>2018-07-29, 23:52:48</p>
+        <p><span>最后更新:</span>2018-07-30, 09:04:01</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/28/归并排序/" title="归并排序(自顶向下，自底向上)">https://xerdemo.github.io/2018/07/28/归并排序/</a>
             <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/07/28/归并排序/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -382,6 +386,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/07/31/选择排序/">
+                    选择排序
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -473,7 +483,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/07/31/选择排序/" title="上一篇: 选择排序">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -485,7 +497,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/归并排序/">归并排序(自顶向下，自底向上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/二分查找递归与非递归形式/">二分查找递归与非递归形式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/23/快速排序实现及优化/">快速排序实现及优化</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/31/插入排序/">插入排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/31/简单插入排序/">插入排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/31/冒泡排序/">冒泡排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/31/选择排序/">选择排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/归并排序/">归并排序(自顶向下，自底向上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/二分查找递归与非递归形式/">二分查找递归与非递归形式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/23/快速排序实现及优化/">快速排序实现及优化</a></li></ul>
 
 
 
