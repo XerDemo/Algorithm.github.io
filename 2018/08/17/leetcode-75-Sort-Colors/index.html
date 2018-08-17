@@ -15,15 +15,15 @@
 
 
 
-<meta name="keywords" content="java实现,数组问题,双指针之快慢指针">
+<meta name="keywords" content="java实现,计数排序,三路快速排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 26 Remove Duplicates from Sorted Array">
-<meta property="og:url" content="https://xerdemo.github.io/2018/08/14/LeetCode解题/leetcode-26-Remove-Duplicates-from-Sorted-Array/index.html">
+<meta property="og:title" content="leetcode 75 Sort Colors">
+<meta property="og:url" content="https://xerdemo.github.io/2018/08/17/leetcode-75-Sort-Colors/index.html">
 <meta property="og:site_name" content="The beauty of programming">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-14T10:56:19.482Z">
+<meta property="og:updated_time" content="2018-08-17T09:45:49.531Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 26 Remove Duplicates from Sorted Array">
+<meta name="twitter:title" content="leetcode 75 Sort Colors">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>leetcode 26 Remove Duplicates from Sorted Array | The beauty of programming</title>
+<title>leetcode 75 Sort Colors | The beauty of programming</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -278,11 +278,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-LeetCode解题/leetcode-26-Remove-Duplicates-from-Sorted-Array" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-leetcode-75-Sort-Colors" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/14/LeetCode解题/leetcode-26-Remove-Duplicates-from-Sorted-Array/" class="article-date">
-      <time datetime="2018-08-14T09:58:49.000Z" itemprop="datePublished">2018-08-14</time>
+      <a href="/2018/08/17/leetcode-75-Sort-Colors/" class="article-date">
+      <time datetime="2018-08-17T08:45:03.000Z" itemprop="datePublished">2018-08-17</time>
 </a>
 
 
@@ -297,7 +297,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode 26 Remove Duplicates from Sorted Array
+      leetcode 75 Sort Colors
     </h1>
   
 
@@ -312,7 +312,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双指针之快慢指针/">双指针之快慢指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组问题/">数组问题</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/三路快速排序/">三路快速排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计数排序/">计数排序</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -323,11 +323,20 @@
       
           
         <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
-<p><the rest="" of="" contents="" |="" 余下全文=""><br>Remove Duplicates from Sorted Arrayt:<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/" target="_blank" rel="noopener">题目链接</a></the></p>
-<h2 id="方法1：双指针之快慢指针"><a href="#方法1：双指针之快慢指针" class="headerlink" title="方法1：双指针之快慢指针"></a>方法1：双指针之快慢指针</h2><p><strong><code>基本思路：</code></strong>用快指针fast遍历整个数组，发现符合条件的数据放入[0,slow]这个区间,题目有序这个条件很重要</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution1</span> &#123;</span><br><span class="line">	<span class="comment">// 时间复杂度O(N)  空间复杂度O(1)   双指针</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span>(<span class="params"><span class="keyword">int</span>[] nums</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (nums == <span class="literal">null</span> || nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> slow = <span class="number">0</span>;  				 <span class="comment">// [0,slow]  存放合法数据(答案)</span></span><br><span class="line">		<span class="comment">// 快指针遍历数组  </span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> fast = <span class="number">0</span>; fast &lt; nums.length; ++fast) &#123;</span><br><span class="line">			<span class="comment">// 当前元素在[0,slow]中未出现，添加到[0,slow)  此处体会数组有序这个条件</span></span><br><span class="line">			<span class="keyword">if</span> (nums[slow] != nums[fast]) &#123;</span><br><span class="line">				nums[++slow] = nums[fast];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> slow+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] nums = &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span> &#125;;</span><br><span class="line">		System.<span class="keyword">out</span>.println(removeDuplicates(nums));</span><br><span class="line">		System.<span class="keyword">out</span>.println(Arrays.toString(nums));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
+<ol start="75">
+<li>Sort Colors:<a href="https://leetcode.com/problems/sort-colors/description/" target="_blank" rel="noopener">题目链接</a></li>
+</ol>
+<h2 id="方法1：计数排序"><a href="#方法1：计数排序" class="headerlink" title="方法1：计数排序"></a>方法1：计数排序</h2><blockquote>
+<p><strong><code>计数排序算法详情链接:</code></strong>&nbsp;&nbsp;<a href="https://xerdemo.github.io/2018/08/16/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/">点击这里</a></p>
+</blockquote>
+<p><strong><code>计数排序源码如下：</code></strong><br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</span><br><span class="line">	<span class="comment">// 时间复杂度O(N)  空间复杂度O(k) 其中K为要排序的数组的范围 O(3)  计数排序</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> sortColors(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">		<span class="comment">// 1.创建计数数组  并初始化</span></span><br><span class="line">		<span class="keyword">int</span>[] <span class="keyword">count</span> = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br><span class="line">		<span class="comment">// 2.将nums元素存放进对应的count中计算出现次数</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; ++i) &#123;</span><br><span class="line">			<span class="keyword">count</span>[nums[i]]++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 3.根据count出现次数来写入原数组nums</span></span><br><span class="line">		<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">count</span>.length; ++i) &#123;</span><br><span class="line">			<span class="keyword">while</span> (<span class="keyword">count</span>[i]-- != <span class="number">0</span>) &#123;</span><br><span class="line">				nums[j++] = i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">		<span class="keyword">int</span>[] nums = &#123; <span class="number">2</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span> &#125;;</span><br><span class="line">		sortColors(nums);</span><br><span class="line">		System.out.<span class="keyword">println</span>(Arrays.toString(nums));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="方法二：三路快速排序"><a href="#方法二：三路快速排序" class="headerlink" title="方法二：三路快速排序"></a>方法二：三路快速排序</h2><blockquote>
+<p><strong><code>三路快速算法详情链接:</code></strong>&nbsp;&nbsp;<a href="https://xerdemo.github.io/2018/07/23/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BC%98%E5%8C%96/">点击这里</a></p>
+</blockquote>
+<p><strong><code>三路快速排序源码如下：</code></strong><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> void <span class="built_in">swap</span>(int[] nums, int i, int j) &#123;</span><br><span class="line">		int t = nums[i];</span><br><span class="line">		nums[i] = nums[j];</span><br><span class="line">		nums[j] = t;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> void <span class="built_in">insertionSort</span>(int[] nums, int <span class="keyword">left</span>, int <span class="keyword">right</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (int i = <span class="keyword">left</span> + <span class="number">1</span>; i &lt;= <span class="keyword">right</span>; ++i) &#123;</span><br><span class="line">			int temp = nums[i];</span><br><span class="line">			int j = i;</span><br><span class="line">			<span class="keyword">for</span> (; j &gt; <span class="keyword">left</span> &amp;&amp; nums[j - <span class="number">1</span>] &gt; temp; j--) &#123;</span><br><span class="line">				nums[j] = nums[j-<span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			nums[j] = temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> void quickSort3ways(int[] nums, int <span class="keyword">left</span>, int <span class="keyword">right</span>) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">right</span> - <span class="keyword">left</span> &lt;= <span class="number">15</span>) &#123;</span><br><span class="line">			<span class="built_in">insertionSort</span>(nums, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 基准的选取 : 三路取中法</span></span><br><span class="line">		<span class="comment">// 保证nums[left] &lt;= nums[mid] &lt;= nums[right] 最后将nums[left],nums[mid]交换</span></span><br><span class="line">		int mid = <span class="keyword">left</span> + (<span class="keyword">right</span> - <span class="keyword">left</span>) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[<span class="keyword">left</span>] &gt; nums[mid]) &#123;</span><br><span class="line">			<span class="built_in">swap</span>(nums, <span class="keyword">left</span>, mid);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (nums[<span class="keyword">left</span>] &gt; nums[<span class="keyword">right</span>]) &#123;</span><br><span class="line">			<span class="built_in">swap</span>(nums, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (nums[mid] &gt; nums[<span class="keyword">right</span>]) &#123;</span><br><span class="line">			<span class="built_in">swap</span>(nums, mid, <span class="keyword">right</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">swap</span>(nums, <span class="keyword">left</span>, mid);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 基准的选取 : 随机数法</span></span><br><span class="line">		<span class="comment">// swap(nums, left, (int)Math.random() * (right-left+1) + left );</span></span><br><span class="line">		int v = nums[<span class="keyword">left</span>];</span><br><span class="line"></span><br><span class="line">		int lt = <span class="keyword">left</span>;</span><br><span class="line">		int gt = <span class="keyword">right</span> + <span class="number">1</span>;</span><br><span class="line">		int i = <span class="keyword">left</span> +<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">while</span> (i &lt; gt) &#123;</span><br><span class="line">			<span class="keyword">if</span> (nums[i] == v) &#123;</span><br><span class="line">				i++;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] &lt; v) &#123;</span><br><span class="line">				<span class="built_in">swap</span>(nums, i++, ++lt);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="built_in">swap</span>(nums, i, --gt);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">swap</span>(nums, <span class="keyword">left</span>, lt--);</span><br><span class="line"></span><br><span class="line">		quickSort3ways(nums, <span class="keyword">left</span>, lt);</span><br><span class="line">		quickSort3ways(nums, gt, <span class="keyword">right</span>);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> void sortColors(int[] nums) &#123;</span><br><span class="line">		quickSort3ways(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="type">String</span>[] args) &#123;</span><br><span class="line">		int[] nums = &#123; <span class="number">2</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span> &#125;;</span><br><span class="line">		sortColors(nums);</span><br><span class="line">		<span class="type">System</span>.out.<span class="built_in">println</span>(<span class="type">Arrays</span>.<span class="built_in">toString</span>(nums));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>ps：<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/26.%20Remove%20Duplicates%20from%20Sorted%20Array" target="_blank" rel="noopener">源代码链接</a></p>
+<p>ps：<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/27.RemoveElement" target="_blank" rel="noopener">源代码链接</a></p>
 </blockquote>
 
       
@@ -337,13 +346,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/14/LeetCode解题/leetcode-26-Remove-Duplicates-from-Sorted-Array/">leetcode 26 Remove Duplicates from Sorted Array</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/17/leetcode-75-Sort-Colors/">leetcode 75 Sort Colors</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
-        <p><span>发布时间:</span>2018-08-14, 17:58:49</p>
-        <p><span>最后更新:</span>2018-08-14, 18:56:19</p>
+        <p><span>发布时间:</span>2018-08-17, 16:45:03</p>
+        <p><span>最后更新:</span>2018-08-17, 17:45:49</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/14/LeetCode解题/leetcode-26-Remove-Duplicates-from-Sorted-Array/" title="leetcode 26 Remove Duplicates from Sorted Array">https://xerdemo.github.io/2018/08/14/LeetCode解题/leetcode-26-Remove-Duplicates-from-Sorted-Array/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/08/14/LeetCode解题/leetcode-26-Remove-Duplicates-from-Sorted-Array/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/17/leetcode-75-Sort-Colors/" title="leetcode 75 Sort Colors">https://xerdemo.github.io/2018/08/17/leetcode-75-Sort-Colors/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/08/17/leetcode-75-Sort-Colors/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -356,15 +365,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/14/LeetCode解题/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/">
-                    leetcode 80 Remove Duplicates from Sorted Array II
+                <a href="/2018/08/17/leetcode-88-Merge-Sorted-Array/">
+                    leetcode 88 Merge Sorted Array
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/14/LeetCode解题/leetcode-27-Remove-Element/">
-                    leetcode 27 Remove Element
+                <a href="/2018/08/16/计数排序/">
+                    计数排序
                 </a>
             </div>
         
@@ -376,7 +385,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1：双指针之快慢指针"><span class="toc-number">1.</span> <span class="toc-text">方法1：双指针之快慢指针</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1：计数排序"><span class="toc-number">1.</span> <span class="toc-text">方法1：计数排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法二：三路快速排序"><span class="toc-number">2.</span> <span class="toc-text">方法二：三路快速排序</span></a></li></ol>
         
     </div>
     <style>
@@ -412,7 +421,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"leetcode 26 Remove Duplicates from Sorted Array　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"leetcode 75 Sort Colors　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -428,7 +437,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2018/08/14/LeetCode解题/leetcode-26-Remove-Duplicates-from-Sorted-Array/" data-title="leetcode 26 Remove Duplicates from Sorted Array" data-url="https://xerdemo.github.io/2018/08/14/LeetCode解题/leetcode-26-Remove-Duplicates-from-Sorted-Array/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/08/17/leetcode-75-Sort-Colors/" data-title="leetcode 75 Sort Colors" data-url="https://xerdemo.github.io/2018/08/17/leetcode-75-Sort-Colors/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -451,7 +460,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/14/LeetCode解题/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/" title="上一篇: leetcode 80 Remove Duplicates from Sorted Array II">
+            <a href="/2018/08/17/leetcode-88-Merge-Sorted-Array/" title="上一篇: leetcode 88 Merge Sorted Array">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -459,7 +468,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/14/LeetCode解题/leetcode-27-Remove-Element/" title="下一篇: leetcode 27 Remove Element">
+            <a href="/2018/08/16/计数排序/" title="下一篇: 计数排序">
                 <i class="fa fa-angle-right"></i>
             </a>
         
