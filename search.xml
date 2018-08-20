@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>leetcode 125 Valid Palindrome</title>
+      <link href="/2018/08/19/leetcode-125-Valid-Palindrome/"/>
+      <url>/2018/08/19/leetcode-125-Valid-Palindrome/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="125"><li>Valid Palindromet:<a href="https://leetcode.com/problems/valid-palindrome/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1：双指针之对撞指针"><a href="#方法1：双指针之对撞指针" class="headerlink" title="方法1：双指针之对撞指针"></a>方法1：双指针之对撞指针</h2><p><strong><code>基本思想：</code></strong></p>]]></content>
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java实现 </tag>
+            
+            <tag> 数组问题 </tag>
+            
+            <tag> 双指针之对撞指针 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>leetcode 167 Two Sum II - Input array is sorted</title>
       <link href="/2018/08/19/LeetCode%E8%A7%A3%E9%A2%98/leetcode-167-Two-Sum-II-Input-array-is-sorted/"/>
       <url>/2018/08/19/LeetCode%E8%A7%A3%E9%A2%98/leetcode-167-Two-Sum-II-Input-array-is-sorted/</url>
@@ -17,13 +42,13 @@
       
         <tags>
             
-            <tag> 二分查找 </tag>
-            
             <tag> java实现 </tag>
             
             <tag> 数组问题 </tag>
             
             <tag> 双指针之对撞指针 </tag>
+            
+            <tag> 二分查找 </tag>
             
         </tags>
       
@@ -90,9 +115,9 @@
       
         <tags>
             
-            <tag> 计数排序 </tag>
-            
             <tag> java实现 </tag>
+            
+            <tag> 计数排序 </tag>
             
             <tag> 三路快速排序 </tag>
             
@@ -379,16 +404,16 @@
   
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
