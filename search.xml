@@ -3,10 +3,35 @@
   
     
     <entry>
+      <title>leetcode 344 Reverse String</title>
+      <link href="/2018/08/20/leetcode-344-Reverse-String/"/>
+      <url>/2018/08/20/leetcode-344-Reverse-String/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="344"><li>Reverse String:<a href="https://leetcode.com/problems/reverse-string/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1：双指针之对撞指针"><a href="#方法1：双指针之对撞指针" class="headerlink" title="方法1：双指针之对撞指针"></a>方法1：双指针之对撞指针</h2><p><strong><code>基本思想：</code></strong>指针i从左向右扫描，指针j从右向左扫描，只要i&lt;j即两者不相遇，就交换指针i和指针j所指向的内容</p><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class Solution1 &#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(N)  空间复杂度O(N) 主要是开辟了res数组</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">String</span> reverseString(<span class="keyword">String</span> s) &#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = s.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">char</span>[] res = s.toCharArray();</span><br><span class="line">        <span class="built_in">while</span> (i &lt; j)&#123;</span><br><span class="line">            <span class="keyword">char</span> temp = res[i];</span><br><span class="line">            res[i] = res[j];</span><br><span class="line">            res[j] = temp;</span><br><span class="line">            i++;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> <span class="keyword">new</span> <span class="keyword">String</span>(res);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> s = <span class="string">"A man, a plan, a canal: Panama"</span>;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="keyword">new</span> Solution1().reverseString(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/344.%20Reverse%20String" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java实现 </tag>
+            
+            <tag> 数组问题 </tag>
+            
+            <tag> 双指针之对撞指针 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>leetcode 125 Valid Palindrome</title>
       <link href="/2018/08/19/leetcode-125-Valid-Palindrome/"/>
       <url>/2018/08/19/leetcode-125-Valid-Palindrome/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="125"><li>Valid Palindromet:<a href="https://leetcode.com/problems/valid-palindrome/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1：双指针之对撞指针"><a href="#方法1：双指针之对撞指针" class="headerlink" title="方法1：双指针之对撞指针"></a>方法1：双指针之对撞指针</h2><p><strong><code>基本思想：</code></strong></p>]]></content>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="125"><li>Valid Palindromet:<a href="https://leetcode.com/problems/valid-palindrome/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1：双指针之对撞指针"><a href="#方法1：双指针之对撞指针" class="headerlink" title="方法1：双指针之对撞指针"></a>方法1：双指针之对撞指针</h2><p><strong><code>基本思想：</code></strong> <strong><code>指针i</code></strong>从左向右扫描，如果遇到的<strong><code>不是</code></strong>字母或者数字<strong><code>i++</code></strong>，<strong><code>指针j</code></strong>从右向左扫描，如果遇到的<strong><code>不是</code></strong>字母或者数字<strong><code>j--</code></strong>，此时i，j指向的是字母或数组，判断两者是否相等，相等继续，不相等说明不是回文数，当i与j相遇时结束</p><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution1</span> &#123;</span><br><span class="line">    <span class="comment">// 时间复杂度 O(N)   空间复杂度O(1)    双指针之对撞指针</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> boolean <span class="title">isPalindrome</span>(<span class="params">String s</span>) </span>&#123;</span><br><span class="line">        s = s.toLowerCase();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = s.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j) &#123;        <span class="comment">// 两者还未相遇</span></span><br><span class="line">            <span class="comment">// 从i向右扫描   如果不是字母或数字i++; i&lt;j 是为了在i++的过程中 i始终小于j</span></span><br><span class="line">            <span class="keyword">while</span> (i &lt; j &amp;&amp; !Character.isLetterOrDigit(s.charAt(i))) &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 从j向左扫描   如果不是字母或数字j--; i&lt;j 是为了在j--的过程中 i始终小于j</span></span><br><span class="line">            <span class="keyword">while</span> (i &lt; j &amp;&amp; !Character.isLetterOrDigit(s.charAt(j))) &#123;</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 如果i&gt;=j 说明已经相遇</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= j) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 此时i,j指向的都是字母或数字 看两者是否相等 不等说明不是回文数</span></span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i) != s.charAt(j)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 如果i,j都指向的是数字或字母 上面的两个while不会执行 需要手动的i++,j--</span></span><br><span class="line">            i++;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</span><br><span class="line">        String s = <span class="string">"A man, a plan, a canal: Panama"</span>;</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="keyword">new</span> Solution1().isPalindrome(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/125.%20Valid%20Palindrome" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
       
       <categories>
           
@@ -404,16 +429,16 @@
   
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
