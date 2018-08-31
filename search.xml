@@ -3,6 +3,15 @@
   
     
     <entry>
+      <title>双指针总结篇</title>
+      <link href="/2018/08/31/%E5%8F%8C%E6%8C%87%E9%92%88%E6%80%BB%E7%BB%93%E7%AF%87/"/>
+      <url>/2018/08/31/%E5%8F%8C%E6%8C%87%E9%92%88%E6%80%BB%E7%BB%93%E7%AF%87/</url>
+      <content type="html"><![CDATA[]]></content>
+      
+      
+    </entry>
+    
+    <entry>
       <title>leetcode 76 Minimum Window Substring</title>
       <link href="/2018/08/25/leetcode-76-Minimum-Window-Substring/"/>
       <url>/2018/08/25/leetcode-76-Minimum-Window-Substring/</url>
@@ -579,16 +588,16 @@
   
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     

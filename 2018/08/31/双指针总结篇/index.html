@@ -15,15 +15,14 @@
 
 
 
-<meta name="keywords" content="java实现,数组问题,双指针之对撞指针">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 11  Container With Most Water">
-<meta property="og:url" content="https://xerdemo.github.io/2018/08/21/leetcode-11-Container-With-Most-Water/index.html">
+<meta property="og:title" content="双指针总结篇">
+<meta property="og:url" content="https://xerdemo.github.io/2018/08/31/双指针总结篇/index.html">
 <meta property="og:site_name" content="The beauty of programming">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-21T08:45:22.924Z">
+<meta property="og:updated_time" content="2018-08-31T05:31:10.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 11  Container With Most Water">
+<meta name="twitter:title" content="双指针总结篇">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +54,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>leetcode 11  Container With Most Water | The beauty of programming</title>
+<title>双指针总结篇 | The beauty of programming</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -278,11 +277,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-leetcode-11-Container-With-Most-Water" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-双指针总结篇" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/21/leetcode-11-Container-With-Most-Water/" class="article-date">
-      <time datetime="2018-08-21T01:31:01.000Z" itemprop="datePublished">2018-08-21</time>
+      <a href="/2018/08/31/双指针总结篇/" class="article-date">
+      <time datetime="2018-08-31T05:31:10.000Z" itemprop="datePublished">2018-08-31</time>
 </a>
 
 
@@ -297,7 +296,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode 11  Container With Most Water
+      双指针总结篇
     </h1>
   
 
@@ -305,16 +304,8 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
-    </div>
-
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双指针之对撞指针/">双指针之对撞指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组问题/">数组问题</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -322,17 +313,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
-<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
-<ol start="11">
-<li>Container With Most Water:<a href="https://leetcode.com/problems/container-with-most-water/description/" target="_blank" rel="noopener">题目链接</a></li>
-</ol>
-<h2 id="方法1：暴力解法"><a href="#方法1：暴力解法" class="headerlink" title="方法1：暴力解法"></a>方法1：暴力解法</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class Solution1 &#123;</span><br><span class="line">    <span class="comment">// 时间复杂度 O(N^2)   空间复杂度O(1)  暴力破解法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> maxArea(<span class="keyword">int</span>[] <span class="built_in">height</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">height</span>.length; ++i) &#123;</span><br><span class="line">            <span class="built_in">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; <span class="built_in">height</span>.length; ++j) &#123;</span><br><span class="line">                <span class="keyword">int</span> area = (j - i) * (<span class="built_in">height</span>[i] &lt; <span class="built_in">height</span>[j] ? <span class="built_in">height</span>[i] : <span class="built_in">height</span>[j]);</span><br><span class="line">                <span class="built_in">if</span> (area &gt; res)&#123;</span><br><span class="line">                    res = area;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] <span class="built_in">height</span> = &#123;<span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">7</span>&#125;;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="keyword">new</span> Solution1().maxArea(<span class="built_in">height</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="方法2：双指针之对撞指针"><a href="#方法2：双指针之对撞指针" class="headerlink" title="方法2：双指针之对撞指针"></a>方法2：双指针之对撞指针</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class Solution2 &#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(N)   空间复杂度O(1)   双指针之对撞指针</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> maxArea(<span class="keyword">int</span>[] <span class="built_in">height</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="built_in">height</span>.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 当i,j还未相遇</span></span><br><span class="line">        <span class="built_in">while</span> (i &lt; j) &#123;</span><br><span class="line">            <span class="keyword">int</span> area = (j - i) * Math.<span class="built_in">min</span>(<span class="built_in">height</span>[i], <span class="built_in">height</span>[j]);  <span class="comment">//  计算当前所围面积</span></span><br><span class="line">            <span class="built_in">if</span> (<span class="built_in">height</span>[i] &lt; <span class="built_in">height</span>[j])&#123;                <span class="comment">// 如果是height[i]小了 尝试i++</span></span><br><span class="line">                i++;</span><br><span class="line">            &#125;<span class="built_in">else</span> &#123;                                    <span class="comment">// 如果是height[j]小了 尝试j--</span></span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">if</span> (res &lt; area) &#123;</span><br><span class="line">                res = area;                             <span class="comment">// 更新所围最大面积</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] <span class="built_in">height</span> = &#123;<span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">7</span>&#125;;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="keyword">new</span> Solution2().maxArea(<span class="built_in">height</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/11.%20Container%20With%20Most%20Water" target="_blank" rel="noopener">源代码链接</a></p>
-</blockquote>
-
+        
       
     </div>
     
@@ -340,13 +321,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/21/leetcode-11-Container-With-Most-Water/">leetcode 11  Container With Most Water</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/31/双指针总结篇/">双指针总结篇</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
-        <p><span>发布时间:</span>2018-08-21, 09:31:01</p>
-        <p><span>最后更新:</span>2018-08-21, 16:45:22</p>
+        <p><span>发布时间:</span>2018-08-31, 13:31:10</p>
+        <p><span>最后更新:</span>2018-08-31, 13:31:10</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/21/leetcode-11-Container-With-Most-Water/" title="leetcode 11  Container With Most Water">https://xerdemo.github.io/2018/08/21/leetcode-11-Container-With-Most-Water/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/08/21/leetcode-11-Container-With-Most-Water/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/31/双指针总结篇/" title="双指针总结篇">https://xerdemo.github.io/2018/08/31/双指针总结篇/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/08/31/双指针总结篇/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -358,16 +339,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/21/leetcode-209-Minimum-Size-Subarray-Sum/">
-                    leetcode 209 Minimum Size Subarray Sum
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/21/leetcode-345-Reverse-Vowels-of-a-String/">
-                    leetcode 345 Reverse Vowels of a String
+                <a href="/2018/08/25/leetcode-76-Minimum-Window-Substring/">
+                    leetcode 76 Minimum Window Substring
                 </a>
             </div>
         
@@ -379,7 +354,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1：暴力解法"><span class="toc-number">1.</span> <span class="toc-text">方法1：暴力解法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2：双指针之对撞指针"><span class="toc-number">2.</span> <span class="toc-text">方法2：双指针之对撞指针</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -415,7 +390,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"leetcode 11  Container With Most Water　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"双指针总结篇　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -431,7 +406,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2018/08/21/leetcode-11-Container-With-Most-Water/" data-title="leetcode 11  Container With Most Water" data-url="https://xerdemo.github.io/2018/08/21/leetcode-11-Container-With-Most-Water/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/08/31/双指针总结篇/" data-title="双指针总结篇" data-url="https://xerdemo.github.io/2018/08/31/双指针总结篇/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -454,15 +429,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/21/leetcode-209-Minimum-Size-Subarray-Sum/" title="上一篇: leetcode 209 Minimum Size Subarray Sum">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/21/leetcode-345-Reverse-Vowels-of-a-String/" title="下一篇: leetcode 345 Reverse Vowels of a String">
+            <a href="/2018/08/25/leetcode-76-Minimum-Window-Substring/" title="下一篇: leetcode 76 Minimum Window Substring">
                 <i class="fa fa-angle-right"></i>
             </a>
         
