@@ -15,18 +15,15 @@
 
 
 
-<meta name="keywords" content="java实现,数组问题,双指针之快慢指针">
+<meta name="keywords" content="java实现,Hash Table,set">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 80 Remove Duplicates from Sorted Array II">
-<meta property="og:url" content="https://xerdemo.github.io/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/index.html">
+<meta property="og:title" content="leetcode 202. Happy Number">
+<meta property="og:url" content="https://xerdemo.github.io/2018/09/04/leetcode-202-Happy-Number/index.html">
 <meta property="og:site_name" content="The beauty of programming">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://xerdemo.github.io/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/1.jpg">
-<meta property="og:image" content="https://xerdemo.github.io/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/2.jpg">
-<meta property="og:updated_time" content="2018-08-19T09:59:59.616Z">
+<meta property="og:updated_time" content="2018-09-04T11:07:42.205Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 80 Remove Duplicates from Sorted Array II">
-<meta name="twitter:image" content="https://xerdemo.github.io/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/1.jpg">
+<meta name="twitter:title" content="leetcode 202. Happy Number">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>leetcode 80 Remove Duplicates from Sorted Array II | The beauty of programming</title>
+<title>leetcode 202. Happy Number | The beauty of programming</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -281,11 +278,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-leetcode-202-Happy-Number" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/" class="article-date">
-      <time datetime="2018-08-14T11:45:57.000Z" itemprop="datePublished">2018-08-14</time>
+      <a href="/2018/09/04/leetcode-202-Happy-Number/" class="article-date">
+      <time datetime="2018-09-04T10:45:36.000Z" itemprop="datePublished">2018-09-04</time>
 </a>
 
 
@@ -300,7 +297,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode 80 Remove Duplicates from Sorted Array II
+      leetcode 202. Happy Number
     </h1>
   
 
@@ -315,7 +312,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双指针之快慢指针/">双指针之快慢指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组问题/">数组问题</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hash-Table/">Hash Table</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/set/">set</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -326,16 +323,14 @@
       
           
         <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
-<p><the rest="" of="" contents="" |="" 余下全文=""><br>Remove Duplicates from Sorted Array II:<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/" target="_blank" rel="noopener">题目链接</a></the></p>
-<h2 id="解法1：双指针之快慢指针"><a href="#解法1：双指针之快慢指针" class="headerlink" title="解法1：双指针之快慢指针"></a>解法1：双指针之快慢指针</h2><p><strong><code>[0,slow]</code></strong>存放answer(第二个数组)，快指针从索引为1的地方开始遍历，初始时count = 1，已经将数组第一个元素0，计算在[0,slow]这个区间<br><strong><code>当快指针与慢指针指向相同元素时：</code></strong></p>
-<div align="center" style="zoom: 20%; margin:  0px auto;"><img src="/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/1.jpg" alt="原理"></div>
-
-<p>slow往后移，并将fast指向的内容赋给slow，即<strong><code>nums[++slow] = nums[fast]</code></strong>,此时count++，执行此过程的<strong><code>前提是count&lt;2</code></strong>,如果count&gt;=2, 代表[0,slow]中已经有两个该元素了，fast往后移，slow不变</p>
-<p><strong><code>当快指针与慢指针指向不相同元素时：</code></strong></p>
-<p><div align="center" style="zoom: 80%; margin:  0px auto;"><img src="/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/2.jpg" alt="原理"></div><br>slow往后移，并将fast指向的内容赋给slow，即<strong><code>nums[++slow] = nums[fast]</code></strong>，并将count置为1，表示[0,slow]中有1个该元素</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> removeDuplicates(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> slow = <span class="number">0</span>;        <span class="comment">// [0,slow] 存放answer</span></span><br><span class="line">        <span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> fast = <span class="number">1</span>; fast &lt; nums.length; ++fast) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[slow] == nums[fast]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">count</span> &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                    nums[++slow] = nums[fast];</span><br><span class="line">                    <span class="keyword">count</span>++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                nums[++slow] = nums[fast];</span><br><span class="line">                <span class="keyword">count</span> = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>&#125;;</span><br><span class="line">        System.out.<span class="keyword">println</span>(removeDuplicates(nums));</span><br><span class="line">        System.out.<span class="keyword">println</span>(Arrays.toString(nums));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
+<ol start="202">
+<li>Happy Number:<a href="https://leetcode.com/problems/happy-number/description/" target="_blank" rel="noopener">题目链接</a></li>
+</ol>
+<h2 id="方法1：利用HashSet"><a href="#方法1：利用HashSet" class="headerlink" title="方法1：利用HashSet"></a>方法1：利用HashSet</h2><p><strong><code>基本思路：</code></strong>首先这个题目是要将数字的每一位分离出来，用sum记录此次该数每个数字的平方和是多少，如果该数重复出现及sum重复，说明肯定不是happy number，用HashSet来记录sum</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> &#123;</span></span><br><span class="line">    <span class="comment">// 时间复杂度 O(N^2)  空间复杂度(m)  m:set的大小</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> boolean <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; <span class="built_in">set</span> = <span class="keyword">new</span> HashSet&lt;&gt;();       <span class="comment">// 记录sum</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="comment">// 分离数位</span></span><br><span class="line">            <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> k = n % <span class="number">10</span>;</span><br><span class="line">                sum += Math.<span class="built_in">pow</span>(k, <span class="number">2</span>);</span><br><span class="line">                n /= <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            n = sum;</span><br><span class="line">            <span class="comment">// 如果sum == 1 说明是happy number</span></span><br><span class="line">            <span class="keyword">if</span> (sum == <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 如果set包含sum 说明不是</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">set</span>.contains(sum))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;  <span class="comment">// set不含sum 添加进set 继续</span></span><br><span class="line">                <span class="built_in">set</span>.add(sum);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">19</span>;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> Solution1().isHappy(n));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/80.%20Remove%20Duplicates%20from%20Sorted%20Array%20II" target="_blank" rel="noopener">源代码链接</a></p>
+<p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/202.%20Happy%20Number" target="_blank" rel="noopener">源代码链接</a></p>
 </blockquote>
 
       
@@ -345,13 +340,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/">leetcode 80 Remove Duplicates from Sorted Array II</a></p>
+        <p><span>本文标题:</span><a href="/2018/09/04/leetcode-202-Happy-Number/">leetcode 202. Happy Number</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
-        <p><span>发布时间:</span>2018-08-14, 19:45:57</p>
-        <p><span>最后更新:</span>2018-08-19, 17:59:59</p>
+        <p><span>发布时间:</span>2018-09-04, 18:45:36</p>
+        <p><span>最后更新:</span>2018-09-04, 19:07:42</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/" title="leetcode 80 Remove Duplicates from Sorted Array II">https://xerdemo.github.io/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/09/04/leetcode-202-Happy-Number/" title="leetcode 202. Happy Number">https://xerdemo.github.io/2018/09/04/leetcode-202-Happy-Number/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/09/04/leetcode-202-Happy-Number/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -364,15 +359,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/16/计数排序/">
-                    计数排序
+                <a href="/2018/09/04/leetcode-290-Word-Pattern/">
+                    leetcode 290. Word Pattern
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/14/LeetCode解题/01-Array/leetcode-26-Remove-Duplicates-from-Sorted-Array/">
-                    leetcode 26 Remove Duplicates from Sorted Array
+                <a href="/2018/09/01/leetcode-350-Intersection-of-Two-Arrays-II/">
+                    leetcode 350. Intersection of Two Arrays II
                 </a>
             </div>
         
@@ -384,7 +379,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解法1：双指针之快慢指针"><span class="toc-number">1.</span> <span class="toc-text">解法1：双指针之快慢指针</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1：利用HashSet"><span class="toc-number">1.</span> <span class="toc-text">方法1：利用HashSet</span></a></li></ol>
         
     </div>
     <style>
@@ -420,7 +415,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"leetcode 80 Remove Duplicates from Sorted Array II　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"leetcode 202. Happy Number　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -436,7 +431,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/" data-title="leetcode 80 Remove Duplicates from Sorted Array II" data-url="https://xerdemo.github.io/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/09/04/leetcode-202-Happy-Number/" data-title="leetcode 202. Happy Number" data-url="https://xerdemo.github.io/2018/09/04/leetcode-202-Happy-Number/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -459,7 +454,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/16/计数排序/" title="上一篇: 计数排序">
+            <a href="/2018/09/04/leetcode-290-Word-Pattern/" title="上一篇: leetcode 290. Word Pattern">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -467,7 +462,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/14/LeetCode解题/01-Array/leetcode-26-Remove-Duplicates-from-Sorted-Array/" title="下一篇: leetcode 26 Remove Duplicates from Sorted Array">
+            <a href="/2018/09/01/leetcode-350-Intersection-of-Two-Arrays-II/" title="下一篇: leetcode 350. Intersection of Two Arrays II">
                 <i class="fa fa-angle-right"></i>
             </a>
         

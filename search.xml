@@ -3,6 +3,81 @@
   
     
     <entry>
+      <title>leetcode 205. Isomorphic Strings</title>
+      <link href="/2018/09/05/leetcode-205-Isomorphic-Strings/"/>
+      <url>/2018/09/05/leetcode-205-Isomorphic-Strings/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="205"><li>Isomorphic Strings:<a href="https://leetcode.com/problems/isomorphic-strings/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1：map"><a href="#方法1：map" class="headerlink" title="方法1：map"></a>方法1：map</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.<span class="keyword">HashMap</span>;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class Solution1 &#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(N)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">boolean</span> isIsomorphic(<span class="keyword">String</span> s, <span class="keyword">String</span> t) &#123;</span><br><span class="line">        Map&lt;Character, Character&gt; <span class="built_in">map</span> = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (s.length() != t.length()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; s.length(); ++i) &#123;</span><br><span class="line">            <span class="built_in">char</span> chs = s.charAt(i);</span><br><span class="line">            <span class="built_in">char</span> cht = t.charAt(i);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">map</span>.containsKey(chs)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!<span class="built_in">map</span>.<span class="built_in">get</span>(chs).equals(cht)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">map</span>.containsValue(cht))&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">map</span>.put(chs, cht);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> s = <span class="string">"egg"</span>;</span><br><span class="line">        <span class="keyword">String</span> t = <span class="string">"add"</span>;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="keyword">new</span> Solution1().isIsomorphic(s, t));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/205.%20Isomorphic%20Strings" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java实现 </tag>
+            
+            <tag> Hash Table </tag>
+            
+            <tag> map </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>leetcode 290. Word Pattern</title>
+      <link href="/2018/09/04/leetcode-290-Word-Pattern/"/>
+      <url>/2018/09/04/leetcode-290-Word-Pattern/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="290"><li>Word Pattern:<a href="https://leetcode.com/problems/word-pattern/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1：HashMap"><a href="#方法1：HashMap" class="headerlink" title="方法1：HashMap"></a>方法1：HashMap</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.<span class="keyword">HashMap</span>;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class Solution1 &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">boolean</span> wordPattern(<span class="keyword">String</span> pattern, <span class="keyword">String</span> <span class="built_in">str</span>) &#123;</span><br><span class="line">        Map&lt;Character, <span class="keyword">String</span>&gt; <span class="built_in">map</span> = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">String</span>[] res = <span class="built_in">str</span>.<span class="built_in">split</span>(<span class="string">" "</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (pattern.length() != res.length)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;pattern.length();++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">map</span>.containsKey(pattern.charAt(i)))&#123;</span><br><span class="line">                <span class="keyword">if</span> (!<span class="built_in">map</span>.<span class="built_in">get</span>(pattern.charAt(i)).equals(res[i])) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">map</span>.containsValue(res[i]))&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">map</span>.put(pattern.charAt(i), res[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> pattern = <span class="string">"abba"</span>;</span><br><span class="line">        <span class="keyword">String</span> <span class="built_in">str</span> = <span class="string">"dog cat cat dog"</span>;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="keyword">new</span> Solution1().wordPattern(pattern, <span class="built_in">str</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/290.%20Word%20Pattern" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java实现 </tag>
+            
+            <tag> Hash Table </tag>
+            
+            <tag> map </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>leetcode 202. Happy Number</title>
+      <link href="/2018/09/04/leetcode-202-Happy-Number/"/>
+      <url>/2018/09/04/leetcode-202-Happy-Number/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="202"><li>Happy Number:<a href="https://leetcode.com/problems/happy-number/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1：利用HashSet"><a href="#方法1：利用HashSet" class="headerlink" title="方法1：利用HashSet"></a>方法1：利用HashSet</h2><p><strong><code>基本思路：</code></strong>首先这个题目是要将数字的每一位分离出来，用sum记录此次该数每个数字的平方和是多少，如果该数重复出现及sum重复，说明肯定不是happy number，用HashSet来记录sum</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> &#123;</span></span><br><span class="line">    <span class="comment">// 时间复杂度 O(N^2)  空间复杂度(m)  m:set的大小</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> boolean <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; <span class="built_in">set</span> = <span class="keyword">new</span> HashSet&lt;&gt;();       <span class="comment">// 记录sum</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="comment">// 分离数位</span></span><br><span class="line">            <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> k = n % <span class="number">10</span>;</span><br><span class="line">                sum += Math.<span class="built_in">pow</span>(k, <span class="number">2</span>);</span><br><span class="line">                n /= <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            n = sum;</span><br><span class="line">            <span class="comment">// 如果sum == 1 说明是happy number</span></span><br><span class="line">            <span class="keyword">if</span> (sum == <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 如果set包含sum 说明不是</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">set</span>.contains(sum))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;  <span class="comment">// set不含sum 添加进set 继续</span></span><br><span class="line">                <span class="built_in">set</span>.add(sum);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">19</span>;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> Solution1().isHappy(n));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/202.%20Happy%20Number" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java实现 </tag>
+            
+            <tag> Hash Table </tag>
+            
+            <tag> set </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>leetcode 350. Intersection of Two Arrays II</title>
       <link href="/2018/09/01/leetcode-350-Intersection-of-Two-Arrays-II/"/>
       <url>/2018/09/01/leetcode-350-Intersection-of-Two-Arrays-II/</url>
@@ -19,9 +94,9 @@
             
             <tag> java实现 </tag>
             
-            <tag> 双指针 </tag>
-            
             <tag> map </tag>
+            
+            <tag> 双指针 </tag>
             
         </tags>
       
