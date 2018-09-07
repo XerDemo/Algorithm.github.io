@@ -15,17 +15,15 @@
 
 
 
-<meta name="keywords" content="java实现,map,Hash Table">
+<meta name="keywords" content="java实现,双指针">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 451. Sort Characters By Frequency">
-<meta property="og:url" content="https://xerdemo.github.io/2018/09/05/leetcode-451-Sort-Characters-By-Frequency/index.html">
+<meta property="og:title" content="leetcode 18. 4Sum">
+<meta property="og:url" content="https://xerdemo.github.io/2018/09/07/leetcode-18-4Sum/index.html">
 <meta property="og:site_name" content="The beauty of programming">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://xerdemo.github.io/2018/09/05/leetcode-451-Sort-Characters-By-Frequency/leetcode_451_1.png">
-<meta property="og:updated_time" content="2018-09-05T09:06:55.057Z">
+<meta property="og:updated_time" content="2018-09-07T12:38:52.959Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 451. Sort Characters By Frequency">
-<meta name="twitter:image" content="https://xerdemo.github.io/2018/09/05/leetcode-451-Sort-Characters-By-Frequency/leetcode_451_1.png">
+<meta name="twitter:title" content="leetcode 18. 4Sum">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>leetcode 451. Sort Characters By Frequency | The beauty of programming</title>
+<title>leetcode 18. 4Sum | The beauty of programming</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -280,11 +278,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-leetcode-451-Sort-Characters-By-Frequency" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-leetcode-18-4Sum" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/09/05/leetcode-451-Sort-Characters-By-Frequency/" class="article-date">
-      <time datetime="2018-09-05T08:36:11.000Z" itemprop="datePublished">2018-09-05</time>
+      <a href="/2018/09/07/leetcode-18-4Sum/" class="article-date">
+      <time datetime="2018-09-07T12:10:07.000Z" itemprop="datePublished">2018-09-07</time>
 </a>
 
 
@@ -299,7 +297,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode 451. Sort Characters By Frequency
+      leetcode 18. 4Sum
     </h1>
   
 
@@ -314,7 +312,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hash-Table/">Hash Table</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双指针/">双指针</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -326,19 +324,14 @@
           
         <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
 <p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
-<ol start="451">
-<li>Sort Characters By Frequency:<a href="https://leetcode.com/problems/sort-characters-by-frequency/description/" target="_blank" rel="noopener">题目链接</a></li>
+<ol start="18">
+<li>4Sum:<a href="https://leetcode.com/problems/4sum/description/" target="_blank" rel="noopener">题目链接</a></li>
 </ol>
-<p><strong><code>图解思路：</code></strong></p>
-<div align="center" style="zoom: 70%; margin:  0px auto;"><img src="/2018/09/05/leetcode-451-Sort-Characters-By-Frequency/leetcode_451_1.png" alt="原理"></div>
-
-
-<h2 id="方法1：利用HashMap"><a href="#方法1：利用HashMap" class="headerlink" title="方法1：利用HashMap"></a>方法1：利用HashMap</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.<span class="keyword">HashMap</span>;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class Solution1 &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">String</span> frequencySort(<span class="keyword">String</span> s) &#123;</span><br><span class="line">        Map&lt;Character, Integer&gt; <span class="built_in">map</span> = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="built_in">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 将s加入到map中 并记录次数</span></span><br><span class="line">        <span class="keyword">for</span> (Character c : s.toCharArray()) &#123;</span><br><span class="line">            <span class="built_in">map</span>.put(c, <span class="built_in">map</span>.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            <span class="built_in">max</span> = Math.<span class="built_in">max</span>(<span class="built_in">max</span>, <span class="built_in">map</span>.<span class="built_in">get</span>(c));</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Character&gt;[] lists = <span class="keyword">new</span> List[<span class="built_in">max</span> + <span class="number">1</span>];    <span class="comment">// 建立链表数量(并不是指真正的链表)  体会+1  lists[0]并没有作用</span></span><br><span class="line">        <span class="comment">// 遍历key  将剩余的元素链到对应位置</span></span><br><span class="line">        <span class="keyword">for</span> (Character c : <span class="built_in">map</span>.keySet()) &#123;</span><br><span class="line">            <span class="built_in">int</span> index = <span class="built_in">map</span>.<span class="built_in">get</span>(c);                     <span class="comment">// 链表下标 也对应的是该字母出现的个数</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="built_in">map</span>.<span class="built_in">get</span>(c) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (lists[index] == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    lists[index] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                &#125;</span><br><span class="line">                lists[index].<span class="built_in">add</span>(c);</span><br><span class="line">                <span class="built_in">map</span>.put(c, <span class="built_in">map</span>.<span class="built_in">get</span>(c) - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        StringBuffer res = <span class="keyword">new</span> StringBuffer();          <span class="comment">// 将答案放在res中</span></span><br><span class="line">        <span class="comment">// 从lists[max] 开始往 lists[1] 遍历 (1-max中可能出现k，使得lists[k] =null 比如本例中lists[3] = null)</span></span><br><span class="line">        <span class="comment">// lists的索引是该字母出现的次数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="built_in">max</span>; i &gt; <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (lists[i] != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="built_in">int</span> j = <span class="number">0</span>; j &lt; lists[i].<span class="built_in">size</span>(); ++j) &#123;</span><br><span class="line">                    res.<span class="built_in">append</span>(lists[i].<span class="built_in">get</span>(j));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> s = <span class="string">"aaabcc"</span>;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="keyword">new</span> Solution1().frequencySort(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="方法2：利用Hash-Table"><a href="#方法2：利用Hash-Table" class="headerlink" title="方法2：利用Hash Table"></a>方法2：利用Hash Table</h2><p>写法跟利用HashMap的一样，只是利用的是哈希表(数组)</p>
-<p><strong><code>int[26]</code></strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for Letters <strong><code>&#39;a&#39; - &#39;z&#39;</code></strong> or <strong><code>&#39;A&#39; - &#39;Z&#39;</code></strong><br><strong><code>int[128]</code></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for <strong><code>ASCII</code></strong><br><strong><code>int[256]</code></strong> &nbsp;&nbsp;&nbsp;&nbsp;  for <strong><code>Extended ASCII</code></strong></p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class Solution2 &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">String</span> frequencySort(<span class="keyword">String</span> s) &#123;</span><br><span class="line">        <span class="built_in">int</span>[] hash = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">256</span>];</span><br><span class="line">        <span class="built_in">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (Character c : s.toCharArray()) &#123;</span><br><span class="line">            hash[c]++;</span><br><span class="line">            <span class="built_in">max</span> = Math.<span class="built_in">max</span>(<span class="built_in">max</span>, hash[c]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        List&lt;Character&gt;[] buckets = <span class="keyword">new</span> List[<span class="built_in">max</span> + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; hash.length; ++i) &#123;</span><br><span class="line">            <span class="built_in">int</span> index = hash[i];</span><br><span class="line">            <span class="keyword">while</span> (hash[i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (buckets[index] == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    buckets[index] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                &#125;</span><br><span class="line">                buckets[index].<span class="built_in">add</span>((<span class="built_in">char</span>) i);</span><br><span class="line">                hash[i]--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        StringBuffer res = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="built_in">max</span>; i &gt; <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (buckets[i] != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="built_in">int</span> j = <span class="number">0</span>; j &lt; buckets[i].<span class="built_in">size</span>(); ++j) &#123;</span><br><span class="line">                    res.<span class="built_in">append</span>(buckets[i].<span class="built_in">get</span>(j));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> s = <span class="string">"aaaabcc"</span>;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="keyword">new</span> Solution2().frequencySort(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<a href="https://xerdemo.github.io/2018/09/05/leetcode-1-Two-Sum/">2Sum</a>  <a href="https://xerdemo.github.io/2018/09/06/leetcode-15-3Sum/">3Sum</a>的基础上进行升级</p>
+<h2 id="解法1：双指针"><a href="#解法1：双指针" class="headerlink" title="解法1：双指针"></a>解法1：双指针</h2><p><strong><code>基本思想：</code></strong> 用四个指针i，j，left，right分别指向排好序后，从左往右对应nums[i] + nums[j] + nums[left] + nums[right] == target;<br>用for循环遍历指针i，其有效范围[i,nums.length-4] 注意是左闭右闭区间，如果是左闭右开则是[i,nums.length-3)<br>用for循环遍历指针j，其有效范围[i+1, nums.length-3]<br>再用双指针方法在[j+1,nums.length-1]范围寻找left，right使得nums[i] + nums[j] + nums[left] + nums[right] == target</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(n^3)  双指针</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">List</span>&lt;<span class="type">List</span>&lt;<span class="type">Integer</span>&gt;&gt; fourSum(int[] nums, int target) &#123;</span><br><span class="line">        <span class="type">Arrays</span>.<span class="built_in">sort</span>(nums);            <span class="comment">// 按从小到大 排序  nums[i] &lt;= nums[j] &lt;= nums[left] &lt;= nums[right]</span></span><br><span class="line">        <span class="type">List</span>&lt;<span class="type">List</span>&lt;<span class="type">Integer</span>&gt;&gt; res = new <span class="type">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 遍历第一个指针i 范围[0,nums.length-4]</span></span><br><span class="line">        <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; nums.length - <span class="number">3</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] + nums[i + <span class="number">1</span>] + nums[i + <span class="number">2</span>] + nums[i + <span class="number">3</span>] &gt; target) &#123;      <span class="comment">// 如果四个最小的元素都比target大</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] + nums[nums.length - <span class="number">1</span>] + nums[nums.length - <span class="number">2</span>] + nums[nums.length - <span class="number">3</span>] &lt; target) &#123;</span><br><span class="line">                <span class="comment">// nums[i]和三个最大元素的和都比target小  i++</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 选取第一个元素时 如果发现存在两个或以上的nums[i]相等，选取最后一个，防止在res中出现重复结果</span></span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span> || (i &gt; <span class="number">0</span> &amp;&amp; nums[i] != nums[i - <span class="number">1</span>])) &#123;</span><br><span class="line">                <span class="comment">// 遍历第二个指针j 范围[i+1, nums.length-3]</span></span><br><span class="line">                <span class="keyword">for</span> (int j = i + <span class="number">1</span>; j &lt; nums.length - <span class="number">2</span>; ++j) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (nums[i] + nums[j] + nums[j + <span class="number">1</span>] + nums[j + <span class="number">2</span>] &gt; target) &#123;  <span class="comment">// 说明第二个元素nums[j]太大</span></span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (nums[i] + nums[j] + nums[nums.length - <span class="number">1</span>] + nums[nums.length - <span class="number">2</span>] &lt; target) &#123;</span><br><span class="line">                        <span class="comment">// 说明nums[j] 太小 j++</span></span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">// 在[i+1,nums.length-3]从如果出现连续nums[j]相等 取最后一个 预防在res中出现重复元素</span></span><br><span class="line">                    <span class="keyword">if</span> (j == i + <span class="number">1</span> || (j &gt; i + <span class="number">1</span> &amp;&amp; nums[j] != nums[j - <span class="number">1</span>])) &#123;</span><br><span class="line">                        <span class="comment">// 使用双指针</span></span><br><span class="line">                        int <span class="keyword">left</span> = j + <span class="number">1</span>;</span><br><span class="line">                        int <span class="keyword">right</span> = nums.length - <span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">while</span> (<span class="keyword">left</span> &lt; <span class="keyword">right</span>) &#123;</span><br><span class="line">                            int sum = nums[i] + nums[j] + nums[<span class="keyword">left</span>] + nums[<span class="keyword">right</span>];</span><br><span class="line">                            <span class="keyword">if</span> (sum == target) &#123;</span><br><span class="line">                                <span class="comment">// 取连续相等nums[left]中的最后一个</span></span><br><span class="line">                                <span class="keyword">while</span> (<span class="keyword">left</span> &lt; <span class="keyword">right</span> &amp;&amp; nums[<span class="keyword">left</span>] == nums[<span class="keyword">left</span> + <span class="number">1</span>]) &#123;</span><br><span class="line">                                    <span class="keyword">left</span>++;</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="comment">// 取连续相等nums[right]中的从右往左的最后一个</span></span><br><span class="line">                                <span class="keyword">while</span> (<span class="keyword">left</span> &lt; <span class="keyword">right</span> &amp;&amp; nums[<span class="keyword">right</span>] == nums[<span class="keyword">right</span> - <span class="number">1</span>]) &#123;</span><br><span class="line">                                    <span class="keyword">right</span>--;</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="type">List</span>&lt;<span class="type">Integer</span>&gt; list = new <span class="type">ArrayList</span>&lt;&gt;();</span><br><span class="line">                                list.add(nums[i]);</span><br><span class="line">                                list.add(nums[j]);</span><br><span class="line">                                list.add(nums[<span class="keyword">left</span>++]);</span><br><span class="line">                                list.add(nums[<span class="keyword">right</span>--]);</span><br><span class="line">                                res.add(list);</span><br><span class="line">                            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; target) &#123;</span><br><span class="line">                                <span class="keyword">right</span>--;</span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                <span class="keyword">left</span>++;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="type">String</span>[] args) &#123;</span><br><span class="line">        int[] nums = &#123;-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">4</span>&#125;;</span><br><span class="line">        int target = -<span class="number">1</span>;</span><br><span class="line">        <span class="type">List</span>&lt;<span class="type">List</span>&lt;<span class="type">Integer</span>&gt;&gt; res = new <span class="type">Solution1</span>().fourSum(nums, target);</span><br><span class="line">        <span class="type">System</span>.out.<span class="built_in">println</span>(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/451.%20Sort%20Characters%20By%20Frequency" target="_blank" rel="noopener">源代码链接</a></p>
+<p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/18.%204Sum" target="_blank" rel="noopener">源代码链接</a></p>
 </blockquote>
 
       
@@ -348,13 +341,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/09/05/leetcode-451-Sort-Characters-By-Frequency/">leetcode 451. Sort Characters By Frequency</a></p>
+        <p><span>本文标题:</span><a href="/2018/09/07/leetcode-18-4Sum/">leetcode 18. 4Sum</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
-        <p><span>发布时间:</span>2018-09-05, 16:36:11</p>
-        <p><span>最后更新:</span>2018-09-05, 17:06:55</p>
+        <p><span>发布时间:</span>2018-09-07, 20:10:07</p>
+        <p><span>最后更新:</span>2018-09-07, 20:38:52</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/09/05/leetcode-451-Sort-Characters-By-Frequency/" title="leetcode 451. Sort Characters By Frequency">https://xerdemo.github.io/2018/09/05/leetcode-451-Sort-Characters-By-Frequency/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/09/05/leetcode-451-Sort-Characters-By-Frequency/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/09/07/leetcode-18-4Sum/" title="leetcode 18. 4Sum">https://xerdemo.github.io/2018/09/07/leetcode-18-4Sum/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/09/07/leetcode-18-4Sum/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -366,16 +359,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/09/05/leetcode-1-Two-Sum/">
-                    leetcode 1. Two Sum
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/09/05/leetcode-205-Isomorphic-Strings/">
-                    leetcode 205. Isomorphic Strings
+                <a href="/2018/09/06/leetcode-15-3Sum/">
+                    leetcode 15. 3Sum
                 </a>
             </div>
         
@@ -387,7 +374,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1：利用HashMap"><span class="toc-number">1.</span> <span class="toc-text">方法1：利用HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2：利用Hash-Table"><span class="toc-number">2.</span> <span class="toc-text">方法2：利用Hash Table</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解法1：双指针"><span class="toc-number">1.</span> <span class="toc-text">解法1：双指针</span></a></li></ol>
         
     </div>
     <style>
@@ -423,7 +410,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"leetcode 451. Sort Characters By Frequency　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"leetcode 18. 4Sum　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -439,7 +426,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2018/09/05/leetcode-451-Sort-Characters-By-Frequency/" data-title="leetcode 451. Sort Characters By Frequency" data-url="https://xerdemo.github.io/2018/09/05/leetcode-451-Sort-Characters-By-Frequency/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/09/07/leetcode-18-4Sum/" data-title="leetcode 18. 4Sum" data-url="https://xerdemo.github.io/2018/09/07/leetcode-18-4Sum/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -462,15 +449,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/09/05/leetcode-1-Two-Sum/" title="上一篇: leetcode 1. Two Sum">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/09/05/leetcode-205-Isomorphic-Strings/" title="下一篇: leetcode 205. Isomorphic Strings">
+            <a href="/2018/09/06/leetcode-15-3Sum/" title="下一篇: leetcode 15. 3Sum">
                 <i class="fa fa-angle-right"></i>
             </a>
         
