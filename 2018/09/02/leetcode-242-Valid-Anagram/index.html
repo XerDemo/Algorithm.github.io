@@ -15,15 +15,15 @@
 
 
 
-<meta name="keywords" content="java实现,双指针">
+<meta name="keywords" content="java实现,map,Hash Table">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 15. 3Sum">
-<meta property="og:url" content="https://xerdemo.github.io/2018/09/06/leetcode-15-3Sum/index.html">
+<meta property="og:title" content="leetcode 242. Valid Anagram">
+<meta property="og:url" content="https://xerdemo.github.io/2018/09/02/leetcode-242-Valid-Anagram/index.html">
 <meta property="og:site_name" content="The beauty of programming">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-07T12:08:54.540Z">
+<meta property="og:updated_time" content="2018-09-02T02:54:30.803Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 15. 3Sum">
+<meta name="twitter:title" content="leetcode 242. Valid Anagram">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>leetcode 15. 3Sum | The beauty of programming</title>
+<title>leetcode 242. Valid Anagram | The beauty of programming</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -278,11 +278,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-leetcode-15-3Sum" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-leetcode-242-Valid-Anagram" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/09/06/leetcode-15-3Sum/" class="article-date">
-      <time datetime="2018-09-06T07:28:26.000Z" itemprop="datePublished">2018-09-06</time>
+      <a href="/2018/09/02/leetcode-242-Valid-Anagram/" class="article-date">
+      <time datetime="2018-09-02T02:43:12.000Z" itemprop="datePublished">2018-09-02</time>
 </a>
 
 
@@ -297,7 +297,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode 15. 3Sum
+      leetcode 242. Valid Anagram
     </h1>
   
 
@@ -312,7 +312,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双指针/">双指针</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hash-Table/">Hash Table</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -324,14 +324,15 @@
           
         <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
 <p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
-<ol start="15">
-<li>3Sum:<a href="https://leetcode.com/problems/3sum/description/" target="_blank" rel="noopener">题目链接</a></li>
+<ol start="242">
+<li>Valid Anagram:<a href="https://leetcode.com/problems/valid-anagram/solution/" target="_blank" rel="noopener">题目链接</a></li>
 </ol>
-<p><strong><code>基本思想：</code></strong> 先对数组排序 ，用一个for循环寻找第一个元素(索引为i)，在用双指针在[i+1,nums.length-1]寻找第二个元素(索引left)，第三个元素(索引right) .<br>如果nums[i] + nums[left] + nums[right] == 0 说明找到了<br>如果nums[i] + nums[left] + nums[right] &lt; 0 left++<br>如果nums[i] + nums[left] + nums[right] &gt; 0 right–</p>
-<h2 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h2><p>注意此方法超时了<br><figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(Nlog2^N) + O(N^2)      排序 + 双指针</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">List</span>&lt;<span class="keyword">List</span>&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">List</span>&lt;<span class="keyword">List</span>&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">2</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> left = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">            <span class="comment">// 在[i+1,nums.length-1] 用双指针搜索另外两个元素</span></span><br><span class="line">            <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">                <span class="keyword">int</span> sum = nums[i] + nums[left] + nums[right];</span><br><span class="line">                <span class="keyword">if</span> (sum == <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">List</span>&lt;Integer&gt; <span class="keyword">list</span> = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                    <span class="keyword">list</span>.add(nums[i]);</span><br><span class="line">                    <span class="keyword">list</span>.add(nums[left++]);</span><br><span class="line">                    <span class="keyword">list</span>.add(nums[right--]);</span><br><span class="line">                    res.add(<span class="keyword">list</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    left++;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    right--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Set&lt;<span class="keyword">List</span>&lt;Integer&gt;&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;(res);    <span class="comment">// set用来给结果 去重</span></span><br><span class="line">        <span class="keyword">List</span>&lt;<span class="keyword">List</span>&lt;Integer&gt;&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;(set); <span class="comment">// 将set转list</span></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> void main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">-1</span>, <span class="number">-4</span>&#125;;</span><br><span class="line">        <span class="keyword">List</span>&lt;<span class="keyword">List</span>&lt;Integer&gt;&gt; res = <span class="keyword">new</span> Solution1().threeSum(nums);</span><br><span class="line">        System.out.println(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="方法2：sorting-twoPoint-推荐"><a href="#方法2：sorting-twoPoint-推荐" class="headerlink" title="方法2：sorting + twoPoint(推荐)"></a>方法2：sorting + twoPoint(推荐)</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(Nlog2^N) + O(N^2)      排序 + 双指针</span></span><br><span class="line">    <span class="comment">// 优化Solution1  不需要set去重 直接在找的时候重复元素不添加到res中</span></span><br><span class="line">    <span class="comment">// 选取的三个元素 索引从左到右  分别为 i 、left 、right(nums[i] &lt;= nums[left] &lt;= nums[rigt])</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">List</span>&lt;<span class="type">List</span>&lt;<span class="type">Integer</span>&gt;&gt; threeSum(int[] nums) &#123;</span><br><span class="line">        <span class="type">List</span>&lt;<span class="type">List</span>&lt;<span class="type">Integer</span>&gt;&gt; res = new <span class="type">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Arrays</span>.<span class="built_in">sort</span>(nums);                               <span class="comment">// 先将数组按从小到大排序</span></span><br><span class="line">        <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; nums.length - <span class="number">2</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span>) &#123;                           <span class="comment">// 最小的元素都大于0 结束</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] + nums[nums.length-<span class="number">1</span>] + nums[nums.length-<span class="number">2</span>] &lt; <span class="number">0</span>) &#123;   <span class="comment">// 说明第一个元素nums[i]太小了</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span> || (i &gt; <span class="number">0</span> &amp;&amp; nums[i] != nums[i - <span class="number">1</span>])) &#123;      <span class="comment">// 防止res中有重复的结果</span></span><br><span class="line">                int <span class="keyword">left</span> = i + <span class="number">1</span>;</span><br><span class="line">                int <span class="keyword">right</span> = nums.length - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span> (<span class="keyword">left</span> &lt; <span class="keyword">right</span>) &#123;</span><br><span class="line">                    int sum = nums[i] + nums[<span class="keyword">left</span>] + nums[<span class="keyword">right</span>];</span><br><span class="line">                    <span class="keyword">if</span> (sum == <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="type">List</span>&lt;<span class="type">Integer</span>&gt; list = new <span class="type">ArrayList</span>&lt;&gt;();</span><br><span class="line">                        <span class="keyword">while</span> (<span class="keyword">left</span> &lt; <span class="keyword">right</span> &amp;&amp; nums[<span class="keyword">left</span>] == nums[<span class="keyword">left</span> + <span class="number">1</span>]) &#123;   <span class="comment">// 防止res中有重复的结果</span></span><br><span class="line">                            <span class="keyword">left</span>++;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">while</span> (<span class="keyword">left</span> &lt; <span class="keyword">right</span> &amp;&amp; nums[<span class="keyword">right</span>] == nums[<span class="keyword">right</span> - <span class="number">1</span>]) &#123; <span class="comment">// 防止res中有重复的结果</span></span><br><span class="line">                            <span class="keyword">right</span>--;</span><br><span class="line">                        &#125;</span><br><span class="line">                        list.add(nums[i]);</span><br><span class="line">                        list.add(nums[<span class="keyword">left</span>++]);</span><br><span class="line">                        list.add(nums[<span class="keyword">right</span>--]);</span><br><span class="line">                        res.add(list);</span><br><span class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="keyword">left</span>++;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">right</span>--;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="type">String</span>[] args) &#123;</span><br><span class="line">        int[] nums = &#123;-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">4</span>&#125;;</span><br><span class="line">        <span class="type">List</span>&lt;<span class="type">List</span>&lt;<span class="type">Integer</span>&gt;&gt; res = new <span class="type">Solution2</span>().threeSum(nums);</span><br><span class="line">        <span class="type">System</span>.out.<span class="built_in">println</span>(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法1：hash-table"><a href="#方法1：hash-table" class="headerlink" title="方法1：hash table"></a>方法1：hash table</h2><p>利用一个哈希表来记录字符串中对应字符出现的频率</p>
+<p><strong><code>int[26]</code></strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for Letters <strong><code>&#39;a&#39; - &#39;z&#39;</code></strong> or <strong><code>&#39;A&#39; - &#39;Z&#39;</code></strong><br><strong><code>int[128]</code></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for <strong><code>ASCII</code></strong><br><strong><code>int[256]</code></strong> &nbsp;&nbsp;&nbsp;&nbsp;  for <strong><code>Extended ASCII</code></strong></p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class Solution1 &#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(N)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">boolean</span> isAnagram(<span class="keyword">String</span> s, <span class="keyword">String</span> t) &#123;</span><br><span class="line">        <span class="built_in">int</span>[] hash = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">256</span>];      <span class="comment">//来存放该字符出现的频率</span></span><br><span class="line">        <span class="comment">// 统计t中字符出现的频率  hash['a'] = hash[97]</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">char</span> ch : t.toCharArray()) &#123;</span><br><span class="line">            hash[ch]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果两者长度不相等 说明肯定不是</span></span><br><span class="line">        <span class="keyword">if</span> (s.length() != t.length()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 遍历s</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; s.length(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hash[s.charAt(i)] &gt; <span class="number">0</span>) &#123;     <span class="comment">// s.charAt(i)当前出现频率 &gt; 0 说明s中与t都有该字符</span></span><br><span class="line">                hash[s.charAt(i)]--;         <span class="comment">// 对应频率减1</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> s = <span class="string">"anagram"</span>;</span><br><span class="line">        <span class="keyword">String</span> t = <span class="string">"nagaram"</span>;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="keyword">new</span> Solution1().isAnagram(s, t));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法2："><a href="#方法2：" class="headerlink" title="方法2："></a>方法2：</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.<span class="keyword">HashMap</span>;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">public</span> class Solution2 &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">boolean</span> isAnagram(<span class="keyword">String</span> s, <span class="keyword">String</span> t) &#123;</span><br><span class="line">        Map&lt;Character, Integer&gt; <span class="built_in">map</span> = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">char</span> ch : t.toCharArray()) &#123;</span><br><span class="line">            <span class="built_in">map</span>.put(ch, <span class="built_in">map</span>.getOrDefault(ch, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (s.length() != t.length()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; s.length(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">map</span>.containsKey(s.charAt(i)) &amp;&amp; <span class="built_in">map</span>.<span class="built_in">get</span>(s.charAt(i)) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">map</span>.put(s.charAt(i), <span class="built_in">map</span>.<span class="built_in">get</span>(s.charAt(i)) - <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> s = <span class="string">"anagram"</span>;</span><br><span class="line">        <span class="keyword">String</span> t = <span class="string">"nagaram"</span>;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="keyword">new</span> Solution1().isAnagram(s, t));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/15.%203Sum" target="_blank" rel="noopener">源代码链接</a></p>
+<p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/242.%20Valid%20Anagram" target="_blank" rel="noopener">源代码链接</a></p>
 </blockquote>
 
       
@@ -341,13 +342,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/09/06/leetcode-15-3Sum/">leetcode 15. 3Sum</a></p>
+        <p><span>本文标题:</span><a href="/2018/09/02/leetcode-242-Valid-Anagram/">leetcode 242. Valid Anagram</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
-        <p><span>发布时间:</span>2018-09-06, 15:28:26</p>
-        <p><span>最后更新:</span>2018-09-07, 20:08:54</p>
+        <p><span>发布时间:</span>2018-09-02, 10:43:12</p>
+        <p><span>最后更新:</span>2018-09-02, 10:54:30</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/09/06/leetcode-15-3Sum/" title="leetcode 15. 3Sum">https://xerdemo.github.io/2018/09/06/leetcode-15-3Sum/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/09/06/leetcode-15-3Sum/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/09/02/leetcode-242-Valid-Anagram/" title="leetcode 242. Valid Anagram">https://xerdemo.github.io/2018/09/02/leetcode-242-Valid-Anagram/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/09/02/leetcode-242-Valid-Anagram/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -360,15 +361,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/09/07/leetcode-18-4Sum/">
-                    leetcode 18. 4Sum
+                <a href="/2018/09/04/leetcode-202-Happy-Number/">
+                    leetcode 202. Happy Number
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/09/05/leetcode-1-Two-Sum/">
-                    leetcode 1. Two Sum
+                <a href="/2018/09/01/备份win10系统/">
+                    备份win10系统
                 </a>
             </div>
         
@@ -380,7 +381,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1："><span class="toc-number">1.</span> <span class="toc-text">方法1：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2：sorting-twoPoint-推荐"><span class="toc-number">2.</span> <span class="toc-text">方法2：sorting + twoPoint(推荐)</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1：hash-table"><span class="toc-number">1.</span> <span class="toc-text">方法1：hash table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2："><span class="toc-number">2.</span> <span class="toc-text">方法2：</span></a></li></ol>
         
     </div>
     <style>
@@ -416,7 +417,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"leetcode 15. 3Sum　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"leetcode 242. Valid Anagram　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -432,7 +433,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2018/09/06/leetcode-15-3Sum/" data-title="leetcode 15. 3Sum" data-url="https://xerdemo.github.io/2018/09/06/leetcode-15-3Sum/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/09/02/leetcode-242-Valid-Anagram/" data-title="leetcode 242. Valid Anagram" data-url="https://xerdemo.github.io/2018/09/02/leetcode-242-Valid-Anagram/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -455,7 +456,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/09/07/leetcode-18-4Sum/" title="上一篇: leetcode 18. 4Sum">
+            <a href="/2018/09/04/leetcode-202-Happy-Number/" title="上一篇: leetcode 202. Happy Number">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -463,7 +464,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/09/05/leetcode-1-Two-Sum/" title="下一篇: leetcode 1. Two Sum">
+            <a href="/2018/09/01/备份win10系统/" title="下一篇: 备份win10系统">
                 <i class="fa fa-angle-right"></i>
             </a>
         
