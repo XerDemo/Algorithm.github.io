@@ -15,15 +15,15 @@
 
 
 
-<meta name="keywords" content="java实现,数组问题,双指针之对撞指针">
+<meta name="keywords" content="java实现,双指针,set">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 125 Valid Palindrome">
-<meta property="og:url" content="https://xerdemo.github.io/2018/08/19/LeetCode解题/01-Array/leetcode-125-Valid-Palindrome/index.html">
+<meta property="og:title" content="leetcode 349. Intersection of Two Arrays">
+<meta property="og:url" content="https://xerdemo.github.io/2018/08/31/LeetCode解题/01-Array/leetcode-349-Intersection-of-Two-Arrays/index.html">
 <meta property="og:site_name" content="The beauty of programming">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-20T10:48:45.290Z">
+<meta property="og:updated_time" content="2018-09-01T06:26:15.191Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 125 Valid Palindrome">
+<meta name="twitter:title" content="leetcode 349. Intersection of Two Arrays">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>leetcode 125 Valid Palindrome | The beauty of programming</title>
+<title>leetcode 349. Intersection of Two Arrays | The beauty of programming</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -278,11 +278,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-LeetCode解题/01-Array/leetcode-125-Valid-Palindrome" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-LeetCode解题/01-Array/leetcode-349-Intersection-of-Two-Arrays" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/19/LeetCode解题/01-Array/leetcode-125-Valid-Palindrome/" class="article-date">
-      <time datetime="2018-08-19T13:57:54.000Z" itemprop="datePublished">2018-08-19</time>
+      <a href="/2018/08/31/LeetCode解题/01-Array/leetcode-349-Intersection-of-Two-Arrays/" class="article-date">
+      <time datetime="2018-08-31T10:38:08.000Z" itemprop="datePublished">2018-08-31</time>
 </a>
 
 
@@ -297,7 +297,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode 125 Valid Palindrome
+      leetcode 349. Intersection of Two Arrays
     </h1>
   
 
@@ -312,7 +312,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双指针之对撞指针/">双指针之对撞指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组问题/">数组问题</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/set/">set</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双指针/">双指针</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -324,13 +324,13 @@
           
         <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
 <p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
-<ol start="125">
-<li>Valid Palindromet:<a href="https://leetcode.com/problems/valid-palindrome/description/" target="_blank" rel="noopener">题目链接</a></li>
+<ol start="349">
+<li>Intersection of Two Arrays:<a href="https://leetcode.com/problems/intersection-of-two-arrays/description/" target="_blank" rel="noopener">题目链接</a></li>
 </ol>
-<h2 id="方法1：双指针之对撞指针"><a href="#方法1：双指针之对撞指针" class="headerlink" title="方法1：双指针之对撞指针"></a>方法1：双指针之对撞指针</h2><p><strong><code>基本思想：</code></strong> <strong><code>指针i</code></strong>从左向右扫描，如果遇到的<strong><code>不是</code></strong>字母或者数字<strong><code>i++</code></strong>，<strong><code>指针j</code></strong>从右向左扫描，如果遇到的<strong><code>不是</code></strong>字母或者数字<strong><code>j--</code></strong>，此时i，j指向的是字母或数组，判断两者是否相等，相等继续，不相等说明不是回文数，当i与j相遇时结束</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution1</span> &#123;</span><br><span class="line">    <span class="comment">// 时间复杂度 O(N)   空间复杂度O(1)    双指针之对撞指针</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> boolean <span class="title">isPalindrome</span>(<span class="params">String s</span>) </span>&#123;</span><br><span class="line">        s = s.toLowerCase();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = s.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j) &#123;        <span class="comment">// 两者还未相遇</span></span><br><span class="line">            <span class="comment">// 从i向右扫描   如果不是字母或数字i++; i&lt;j 是为了在i++的过程中 i始终小于j</span></span><br><span class="line">            <span class="keyword">while</span> (i &lt; j &amp;&amp; !Character.isLetterOrDigit(s.charAt(i))) &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 从j向左扫描   如果不是字母或数字j--; i&lt;j 是为了在j--的过程中 i始终小于j</span></span><br><span class="line">            <span class="keyword">while</span> (i &lt; j &amp;&amp; !Character.isLetterOrDigit(s.charAt(j))) &#123;</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 如果i&gt;=j 说明已经相遇</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= j) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 此时i,j指向的都是字母或数字 看两者是否相等 不等说明不是回文数</span></span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i) != s.charAt(j)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 如果i,j都指向的是数字或字母 上面的两个while不会执行 需要手动的i++,j--</span></span><br><span class="line">            i++;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</span><br><span class="line">        String s = <span class="string">"A man, a plan, a canal: Panama"</span>;</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="keyword">new</span> Solution1().isPalindrome(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法1-利用set"><a href="#方法1-利用set" class="headerlink" title="方法1:利用set"></a>方法1:利用set</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class Solution1 &#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(N)  空间复杂度O(N):两个set+res[]</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span>[] intersection(<span class="built_in">int</span>[] nums1, <span class="built_in">int</span>[] nums2) &#123;</span><br><span class="line">        Set&lt;Integer&gt; <span class="built_in">set</span> = <span class="keyword">new</span> HashSet&lt;&gt;();        <span class="comment">// 用来存放 nums2</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> x:nums2)&#123;                         <span class="comment">// 将nums2添加到set(此时nums2的重复元素被过滤)</span></span><br><span class="line">            <span class="built_in">set</span>.<span class="built_in">add</span>(x);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Set&lt;Integer&gt; resultSet = <span class="keyword">new</span> HashSet&lt;&gt;();  <span class="comment">// 存放两数组之间的公共元素(重复的会被过滤)</span></span><br><span class="line">        <span class="comment">// 遍历nums1 看set中是否含有此元素</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i =<span class="number">0</span>; i&lt;nums1.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">set</span>.contains(nums1[i])) &#123;</span><br><span class="line">                resultSet.<span class="built_in">add</span>(nums1[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将resultSet转为数组</span></span><br><span class="line">        <span class="built_in">int</span>[] res = <span class="keyword">new</span> <span class="built_in">int</span>[resultSet.<span class="built_in">size</span>()];</span><br><span class="line">        <span class="built_in">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> x: resultSet)&#123;</span><br><span class="line">            res[index++] = x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="built_in">int</span>[] nums1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>&#125;;</span><br><span class="line">        <span class="built_in">int</span>[] nums2 = &#123;<span class="number">2</span>, <span class="number">2</span>&#125;;</span><br><span class="line">        <span class="built_in">int</span>[] res = (<span class="keyword">new</span> Solution1()).intersection(nums1, nums2);</span><br><span class="line">        System.out.<span class="built_in">println</span>(Arrays.toString(res));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法2：双指针"><a href="#方法2：双指针" class="headerlink" title="方法2：双指针"></a>方法2：双指针</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class Solution2 &#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(nlog2^n)   双指针</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span>[] intersection(<span class="built_in">int</span>[] nums1, <span class="built_in">int</span>[] nums2) &#123;</span><br><span class="line">        <span class="comment">// 先对两个数组 进行排序</span></span><br><span class="line">        Arrays.<span class="built_in">sort</span>(nums1);</span><br><span class="line">        Arrays.<span class="built_in">sort</span>(nums2);</span><br><span class="line"></span><br><span class="line">        Set&lt;Integer&gt; <span class="built_in">set</span> = <span class="keyword">new</span> HashSet&lt;&gt;(); <span class="comment">// 存放答案(会过滤掉重复的元素)</span></span><br><span class="line">        <span class="built_in">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; nums1.length &amp;&amp; j &lt; nums2.length) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums1[i] == nums2[j]) &#123;</span><br><span class="line">                <span class="built_in">set</span>.<span class="built_in">add</span>(nums1[i]);</span><br><span class="line">                i++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[i] &lt; nums2[j]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将set转为数组</span></span><br><span class="line">        <span class="built_in">int</span>[] res = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="built_in">set</span>.<span class="built_in">size</span>()];</span><br><span class="line">        <span class="built_in">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (Integer x : <span class="built_in">set</span>) &#123;</span><br><span class="line">            res[index++] = x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="built_in">int</span>[] nums1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>&#125;;</span><br><span class="line">        <span class="built_in">int</span>[] nums2 = &#123;<span class="number">2</span>, <span class="number">2</span>&#125;;</span><br><span class="line">        <span class="built_in">int</span>[] res = (<span class="keyword">new</span> Solution1()).intersection(nums1, nums2);</span><br><span class="line">        System.out.<span class="built_in">println</span>(Arrays.toString(res));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/125.%20Valid%20Palindrome" target="_blank" rel="noopener">源代码链接</a></p>
+<p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/349.%20Intersection%20of%20Two%20Arrays" target="_blank" rel="noopener">源代码链接</a></p>
 </blockquote>
 
       
@@ -340,13 +340,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/19/LeetCode解题/01-Array/leetcode-125-Valid-Palindrome/">leetcode 125 Valid Palindrome</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/31/LeetCode解题/01-Array/leetcode-349-Intersection-of-Two-Arrays/">leetcode 349. Intersection of Two Arrays</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
-        <p><span>发布时间:</span>2018-08-19, 21:57:54</p>
-        <p><span>最后更新:</span>2018-08-20, 18:48:45</p>
+        <p><span>发布时间:</span>2018-08-31, 18:38:08</p>
+        <p><span>最后更新:</span>2018-09-01, 14:26:15</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/19/LeetCode解题/01-Array/leetcode-125-Valid-Palindrome/" title="leetcode 125 Valid Palindrome">https://xerdemo.github.io/2018/08/19/LeetCode解题/01-Array/leetcode-125-Valid-Palindrome/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/08/19/LeetCode解题/01-Array/leetcode-125-Valid-Palindrome/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/31/LeetCode解题/01-Array/leetcode-349-Intersection-of-Two-Arrays/" title="leetcode 349. Intersection of Two Arrays">https://xerdemo.github.io/2018/08/31/LeetCode解题/01-Array/leetcode-349-Intersection-of-Two-Arrays/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/08/31/LeetCode解题/01-Array/leetcode-349-Intersection-of-Two-Arrays/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -359,15 +359,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/20/LeetCode解题/01-Array/leetcode-344-Reverse-String/">
-                    leetcode 344 Reverse String
+                <a href="/2018/09/01/LeetCode解题/01-Array/leetcode-350-Intersection-of-Two-Arrays-II/">
+                    leetcode 350. Intersection of Two Arrays II
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/19/LeetCode解题/01-Array/leetcode-167-Two-Sum-II-Input-array-is-sorted/">
-                    leetcode 167 Two Sum II - Input array is sorted
+                <a href="/2018/08/31/双指针总结篇/">
+                    双指针总结篇
                 </a>
             </div>
         
@@ -379,7 +379,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1：双指针之对撞指针"><span class="toc-number">1.</span> <span class="toc-text">方法1：双指针之对撞指针</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1-利用set"><span class="toc-number">1.</span> <span class="toc-text">方法1:利用set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2：双指针"><span class="toc-number">2.</span> <span class="toc-text">方法2：双指针</span></a></li></ol>
         
     </div>
     <style>
@@ -415,7 +415,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"leetcode 125 Valid Palindrome　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"leetcode 349. Intersection of Two Arrays　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -431,7 +431,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2018/08/19/LeetCode解题/01-Array/leetcode-125-Valid-Palindrome/" data-title="leetcode 125 Valid Palindrome" data-url="https://xerdemo.github.io/2018/08/19/LeetCode解题/01-Array/leetcode-125-Valid-Palindrome/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/08/31/LeetCode解题/01-Array/leetcode-349-Intersection-of-Two-Arrays/" data-title="leetcode 349. Intersection of Two Arrays" data-url="https://xerdemo.github.io/2018/08/31/LeetCode解题/01-Array/leetcode-349-Intersection-of-Two-Arrays/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -454,7 +454,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/20/LeetCode解题/01-Array/leetcode-344-Reverse-String/" title="上一篇: leetcode 344 Reverse String">
+            <a href="/2018/09/01/LeetCode解题/01-Array/leetcode-350-Intersection-of-Two-Arrays-II/" title="上一篇: leetcode 350. Intersection of Two Arrays II">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -462,7 +462,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/19/LeetCode解题/01-Array/leetcode-167-Two-Sum-II-Input-array-is-sorted/" title="下一篇: leetcode 167 Two Sum II - Input array is sorted">
+            <a href="/2018/08/31/双指针总结篇/" title="下一篇: 双指针总结篇">
                 <i class="fa fa-angle-right"></i>
             </a>
         
