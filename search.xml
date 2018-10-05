@@ -3,11 +3,71 @@
   
     
     <entry>
+      <title>328. Odd Even Linked List</title>
+      <link href="/2018/10/05/328-Odd-Even-Linked-List/"/>
+      <url>/2018/10/05/328-Odd-Even-Linked-List/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="328"><li>Odd Even Linked List:<a href="https://leetcode.com/problems/odd-even-linked-list/description/" target="_blank" rel="noopener">题目链接</a><br>相似题目86. Partition List:<a href="https://leetcode.com/problems/partition-list/description/" target="_blank" rel="noopener">题目链接</a></li></ol><p><strong><code>基本思想:</code></strong>在遍历head的同时，创建两个链表，(dummy_1)用来存放位置为奇数的节点，(dummy_2)用来存放位置为偶数的节点，最后将dummy_2的最后一个节点指针域置为NULL，被链接到dummy_1的最后一个节点</p><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(N)  空间复杂度O(1)</span></span><br><span class="line">LinkNode * oddEvenList(struct ListNode* head) &#123;</span><br><span class="line">    LinkNode *dummy_1 = (LinkNode *) malloc(sizeof(LinkNode));     <span class="comment">// 设立带头结点的链表 存放位置为奇数的节点</span></span><br><span class="line">    LinkNode *dummy_2 = (LinkNode *) malloc(sizeof(LinkNode));     <span class="comment">// 设立带头结点的链表 存放位置为偶数的节点</span></span><br><span class="line">    LinkNode *curNode_1 = dummy_1, *curNode_2 = dummy_2;</span><br><span class="line">    int count = <span class="number">1</span>;                                                 <span class="comment">// 计数器</span></span><br><span class="line">    <span class="keyword">while</span> (head) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0</span> != count % <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="function"><span class="title">curNode_1</span>-&gt;</span>next = head;</span><br><span class="line">            curNode_1 = head;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="function"><span class="title">curNode_2</span>-&gt;</span>next = head;</span><br><span class="line">            curNode_2 = head;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="title">head</span> = head-&gt;</span>next;</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">curNode_2</span>-&gt;</span>next = NULL;          <span class="comment">// dummy_2要接在dummy_1的后面，当然要将整体的最后一个元素的指针域置为NULL</span></span><br><span class="line">    <span class="function"><span class="title">curNode_1</span>-&gt;</span><span class="function"><span class="title">next</span> = dummy_2-&gt;</span>next;</span><br><span class="line">    <span class="function"><span class="title">return</span> dummy_1-&gt;</span>next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/328.%20Odd%20Even%20Linked%20List" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C实现 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>86. Partition List</title>
+      <link href="/2018/10/05/86-Partition-List/"/>
+      <url>/2018/10/05/86-Partition-List/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="86"><li>Partition List:<a href="https://leetcode.com/problems/partition-list/description/" target="_blank" rel="noopener">题目链接</a></li></ol><p><strong><code>基本思想:</code></strong>在遍历head的同时，创建两个链表，(dummy_1)用来存放小于x的节点，(dummy_2)用来存放大于等于x的节点，最后将dummy_2的最后一个节点指针域置为NULL，被链接到dummy_1的最后一个节点</p><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(N)  空间复杂度O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *partition(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *head, int x) &#123;</span><br><span class="line">    LinkNode *dummy_1 = (LinkNode *) malloc(<span class="keyword">sizeof</span>(LinkNode));      <span class="comment">// 设立带头结点的链表 存放小于x的节点</span></span><br><span class="line">    LinkNode *dummy_2 = (LinkNode *) malloc(<span class="keyword">sizeof</span>(LinkNode));      <span class="comment">// 设立带头结点的链表 存放大于等于x的节点</span></span><br><span class="line">    LinkNode *curNode_1 = dummy_1, *curNode_2 = dummy_2;</span><br><span class="line">    <span class="keyword">while</span> (head) &#123;</span><br><span class="line">        <span class="keyword">if</span> (head-&gt;val &lt; x) &#123;</span><br><span class="line">            curNode_1-&gt;next = head;</span><br><span class="line">            curNode_1 = head;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            curNode_2-&gt;next = head;</span><br><span class="line">            curNode_2 = head;</span><br><span class="line">        &#125;</span><br><span class="line">        head = head-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    curNode_2-&gt;next = NULL;           <span class="comment">// dummy_2要接在dummy_1的后面，当然要将整体的最后一个元素的指针域置为NULL</span></span><br><span class="line">    curNode_1-&gt;next = dummy_2-&gt;next;</span><br><span class="line">    <span class="keyword">return</span> dummy_1-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/86.%20Partition%20List" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C实现 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>83. Remove Duplicates from Sorted List</title>
       <link href="/2018/10/05/83-Remove-Duplicates-from-Sorted-List/"/>
       <url>/2018/10/05/83-Remove-Duplicates-from-Sorted-List/</url>
-      <content type="html"><![CDATA[]]></content>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="83"><li>Remove Duplicates from Sorted List:<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/" target="_blank" rel="noopener">题目链接</a></li></ol><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(N)  空间复杂度O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *deleteDuplicates(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *head) &#123;</span><br><span class="line">    <span class="keyword">if</span> (head == NULL) &#123;</span><br><span class="line">        <span class="keyword">return</span> NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    LinkNode *curNode = head;                         <span class="comment">// 当前所在点</span></span><br><span class="line">    LinkNode *nextNode = head-&gt;next;                  <span class="comment">// 当前节点的下一个节点</span></span><br><span class="line">    <span class="keyword">while</span> (curNode &amp;&amp; nextNode)&#123;</span><br><span class="line">        <span class="keyword">if</span> (curNode-&gt;val == nextNode-&gt;val)&#123;           <span class="comment">// 两者数据域相等</span></span><br><span class="line">            curNode-&gt;next = nextNode-&gt;next;</span><br><span class="line">            nextNode = nextNode-&gt;next;</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            curNode = nextNode;</span><br><span class="line">            nextNode = nextNode-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/83.%20Remove%20Duplicates%20from%20Sorted%20List" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
       
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C实现 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
       
     </entry>
     
