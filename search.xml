@@ -6,8 +6,24 @@
       <title>82. Remove Duplicates from Sorted List II</title>
       <link href="/2018/10/08/82-Remove-Duplicates-from-Sorted-List-II/"/>
       <url>/2018/10/08/82-Remove-Duplicates-from-Sorted-List-II/</url>
-      <content type="html"><![CDATA[]]></content>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="82"><li>Remove Duplicates from Sorted List II:<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1：双指针"><a href="#方法1：双指针" class="headerlink" title="方法1：双指针"></a>方法1：双指针</h2><p><strong><code>基本思想：</code></strong>用两个指针，一个快指针fast用来寻找重复元素的最后一个元素，漫指针fast用来链接重复元素之前的元素。<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 时间复杂度O(N)  空间复杂度O(1)  双指针</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>* deleteDuplicates(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>* head) &#123;</span><br><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *dummy = (<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *) malloc(<span class="keyword">sizeof</span>(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>));</span><br><span class="line">    dummy-&gt;next = head;</span><br><span class="line">    <span class="comment">// fast : 用来找到重复元素中 的最后一个元素</span></span><br><span class="line">    <span class="comment">// slow : 指向重复元素之前的元素</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *fast = head, *slow = dummy;</span><br><span class="line">    <span class="keyword">while</span> (fast) &#123;</span><br><span class="line">        <span class="keyword">while</span> (fast-&gt;next != NULL &amp;&amp; fast-&gt;val == fast-&gt;next-&gt;val) &#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (slow-&gt;next != fast) &#123;</span><br><span class="line">            slow-&gt;next = fast-&gt;next;</span><br><span class="line">            fast = slow-&gt;next;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/82.%20Remove%20Duplicates%20from%20Sorted%20List%20II" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
       
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C实现 </tag>
+            
+            <tag> 链表 </tag>
+            
+            <tag> 双指针 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -130,7 +146,7 @@
       <title>83. Remove Duplicates from Sorted List</title>
       <link href="/2018/10/05/83-Remove-Duplicates-from-Sorted-List/"/>
       <url>/2018/10/05/83-Remove-Duplicates-from-Sorted-List/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="83"><li>Remove Duplicates from Sorted List:<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/" target="_blank" rel="noopener">题目链接</a></li></ol><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(N)  空间复杂度O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *deleteDuplicates(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *head) &#123;</span><br><span class="line">    <span class="keyword">if</span> (head == NULL) &#123;</span><br><span class="line">        <span class="keyword">return</span> NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    LinkNode *curNode = head;                         <span class="comment">// 当前所在点</span></span><br><span class="line">    LinkNode *nextNode = head-&gt;next;                  <span class="comment">// 当前节点的下一个节点</span></span><br><span class="line">    <span class="keyword">while</span> (curNode &amp;&amp; nextNode)&#123;</span><br><span class="line">        <span class="keyword">if</span> (curNode-&gt;val == nextNode-&gt;val)&#123;           <span class="comment">// 两者数据域相等</span></span><br><span class="line">            curNode-&gt;next = nextNode-&gt;next;</span><br><span class="line">            nextNode = nextNode-&gt;next;</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            curNode = nextNode;</span><br><span class="line">            nextNode = nextNode-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/83.%20Remove%20Duplicates%20from%20Sorted%20List" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="83"><li>Remove Duplicates from Sorted List:<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(N)  空间复杂度O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *deleteDuplicates(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *head) &#123;</span><br><span class="line">    <span class="keyword">if</span> (head == NULL) &#123;</span><br><span class="line">        <span class="keyword">return</span> NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    LinkNode *curNode = head;                         <span class="comment">// 当前所在点</span></span><br><span class="line">    LinkNode *nextNode = head-&gt;next;                  <span class="comment">// 当前节点的下一个节点</span></span><br><span class="line">    <span class="keyword">while</span> (curNode &amp;&amp; nextNode)&#123;</span><br><span class="line">        <span class="keyword">if</span> (curNode-&gt;val == nextNode-&gt;val)&#123;           <span class="comment">// 两者数据域相等</span></span><br><span class="line">            curNode-&gt;next = nextNode-&gt;next;</span><br><span class="line">            nextNode = nextNode-&gt;next;</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            curNode = nextNode;</span><br><span class="line">            nextNode = nextNode-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="方法2：双指针"><a href="#方法2：双指针" class="headerlink" title="方法2：双指针"></a>方法2：双指针</h2><p>与方法1相比慢一点<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(N)  空间复杂度O(1)   双指针</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *deleteDuplicates(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *head) &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *dummy = (<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *) malloc(<span class="keyword">sizeof</span>(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>));</span><br><span class="line">    dummy-&gt;next = head;</span><br><span class="line">    <span class="comment">// fast : 最后一个重复元素的最后一个元素</span></span><br><span class="line">    <span class="comment">// slow : 链接重复元素之前的元素</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *fast = head, *slow = dummy;</span><br><span class="line">    <span class="keyword">while</span> (fast)&#123;</span><br><span class="line">        <span class="keyword">while</span> (fast-&gt;next != NULL &amp;&amp; fast-&gt;next-&gt;val == fast-&gt;val) &#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (slow-&gt;next != fast) &#123;</span><br><span class="line">            slow-&gt;next = fast;</span><br><span class="line">            slow = fast;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        fast = fast-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/83.%20Remove%20Duplicates%20from%20Sorted%20List" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
       
       <categories>
           
@@ -210,9 +226,9 @@
       
         <tags>
             
-            <tag> java实现 </tag>
-            
             <tag> 双指针 </tag>
+            
+            <tag> java实现 </tag>
             
         </tags>
       
@@ -233,9 +249,9 @@
       
         <tags>
             
-            <tag> java实现 </tag>
-            
             <tag> 双指针 </tag>
+            
+            <tag> java实现 </tag>
             
         </tags>
       
@@ -256,9 +272,9 @@
       
         <tags>
             
-            <tag> java实现 </tag>
-            
             <tag> 双指针 </tag>
+            
+            <tag> java实现 </tag>
             
         </tags>
       
@@ -279,9 +295,9 @@
       
         <tags>
             
-            <tag> java实现 </tag>
-            
             <tag> 双指针 </tag>
+            
+            <tag> java实现 </tag>
             
             <tag> map </tag>
             
@@ -452,9 +468,9 @@
       
         <tags>
             
-            <tag> java实现 </tag>
-            
             <tag> 双指针 </tag>
+            
+            <tag> java实现 </tag>
             
             <tag> map </tag>
             
@@ -477,9 +493,9 @@
       
         <tags>
             
-            <tag> java实现 </tag>
-            
             <tag> 双指针 </tag>
+            
+            <tag> java实现 </tag>
             
             <tag> set </tag>
             
@@ -502,9 +518,9 @@
       
         <tags>
             
-            <tag> java实现 </tag>
-            
             <tag> 双指针 </tag>
+            
+            <tag> java实现 </tag>
             
             <tag> 数组问题 </tag>
             
