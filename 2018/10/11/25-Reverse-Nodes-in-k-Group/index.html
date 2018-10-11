@@ -15,18 +15,15 @@
 
 
 
-<meta name="keywords" content="java实现,数组问题,双指针之滑动窗口">
+<meta name="keywords" content="C实现,链表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 3 Longest Substring Without Repeating Characters">
-<meta property="og:url" content="https://xerdemo.github.io/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/index.html">
+<meta property="og:title" content="25. Reverse Nodes in k-Group">
+<meta property="og:url" content="https://xerdemo.github.io/2018/10/11/25-Reverse-Nodes-in-k-Group/index.html">
 <meta property="og:site_name" content="The beauty of programming">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://xerdemo.github.io/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/leetcode_3_1.png">
-<meta property="og:image" content="https://xerdemo.github.io/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/leetcode_3_2.png">
-<meta property="og:updated_time" content="2018-08-22T08:37:22.792Z">
+<meta property="og:updated_time" content="2018-10-11T08:45:23.614Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 3 Longest Substring Without Repeating Characters">
-<meta name="twitter:image" content="https://xerdemo.github.io/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/leetcode_3_1.png">
+<meta name="twitter:title" content="25. Reverse Nodes in k-Group">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>leetcode 3 Longest Substring Without Repeating Characters | The beauty of programming</title>
+<title>25. Reverse Nodes in k-Group | The beauty of programming</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -281,11 +278,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-25-Reverse-Nodes-in-k-Group" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/" class="article-date">
-      <time datetime="2018-08-22T07:24:00.000Z" itemprop="datePublished">2018-08-22</time>
+      <a href="/2018/10/11/25-Reverse-Nodes-in-k-Group/" class="article-date">
+      <time datetime="2018-10-11T08:22:38.000Z" itemprop="datePublished">2018-10-11</time>
 </a>
 
 
@@ -300,7 +297,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode 3 Longest Substring Without Repeating Characters
+      25. Reverse Nodes in k-Group
     </h1>
   
 
@@ -315,7 +312,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java实现/">java实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双指针之滑动窗口/">双指针之滑动窗口</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组问题/">数组问题</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C实现/">C实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -327,24 +324,10 @@
           
         <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
 <p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
-<ol start="3">
-<li>Longest Substring Without Repeating Characters:<a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/description/" target="_blank" rel="noopener">题目链接</a></li>
+<ol start="25">
+<li>Reverse Nodes in k-Group:<a href="https://leetcode.com/problems/reverse-nodes-in-k-group/description/" target="_blank" rel="noopener">题目链接</a></li>
 </ol>
-<h2 id="方法1：暴力解法"><a href="#方法1：暴力解法" class="headerlink" title="方法1：暴力解法"></a>方法1：暴力解法</h2><p>利用hashset来判断在[i,j]区间内有无重复元素<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class Solution1 &#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(N^2)    空间复杂度O(set的大小*s的大小)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> lengthOfLongestSubstring(<span class="keyword">String</span> s) &#123;</span><br><span class="line">        <span class="built_in">int</span> res = Integer.MIN_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; s.length(); ++i) &#123;</span><br><span class="line">            <span class="comment">// 创建hashset判断[i,j]之间是否有重复元素</span></span><br><span class="line">            Set&lt;Character&gt; <span class="built_in">set</span> = <span class="keyword">new</span> HashSet();</span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">int</span> j = i; j &lt; s.length(); ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">set</span>.contains(s.charAt(j))) &#123;    <span class="comment">// 如果有重复元素 终止当前循环 判断[i+1,j]之间是否有重复元素</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">set</span>.<span class="built_in">add</span>(s.charAt(j));               <span class="comment">// 如果set中不含当前元素 将当前元素添加进set中</span></span><br><span class="line">                res = Math.<span class="built_in">max</span>(j - i + <span class="number">1</span>, res);     <span class="comment">// 更新结果</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res == Integer.MIN_VALUE ? <span class="number">0</span> : res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> s = <span class="string">"abcabcbb"</span>;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="keyword">new</span> Solution1().lengthOfLongestSubstring(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="方法2：双指针之滑动窗口"><a href="#方法2：双指针之滑动窗口" class="headerlink" title="方法2：双指针之滑动窗口"></a>方法2：双指针之滑动窗口</h2><p>维持一个窗口<strong><code>[left,right)</code></strong>使这个窗口里面的<strong><code>元素不重复</code></strong><br><strong><code>基本思路:</code></strong>[left,right)中没有重复元素，<strong><code>right++</code></strong>,并将该元素对应出现的<strong><code>频率++</code></strong>,直到right对应元素的<strong><code>频率不为0</code></strong>(即在[left,right)中已有该元素)，记录此时在[left,right)区间元素的个数(选取最大值),<strong><code>left</code></strong>对应元素的<strong><code>频率--</code></strong>，并且<strong><code>left++</code></strong>，直到发现此时right对应元素的<strong><code>频率为0</code></strong>  </p>
-<p><strong><code>初始时：</code></strong>left,right都指向第一个元素,此时a,b,c出现的频率都是0</p>
-<div align="center" style="zoom: 70%; margin:  0px auto;"><img src="/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/leetcode_3_1.png" alt="原理"></div>
-
-<p><strong><code>当遇到重复元素时：</code></strong>如图所示，在right遍历的过程中,[left,right)这个左闭右开区间中，a,b,c出现的次数为 <strong><code>a:1 、b:1 、c:1</code></strong>,此时right指向的元素是a,检测发现a之前在[left,right)中出现过，故将left对应元素的频率- -，left++,此时<strong><code>a:0 、b:1 、c:1</code></strong>,发现right指向的元素频率为0了，right++,对应元素的频率++</p>
-<div align="center" style="zoom: 70%; margin:  0px auto;"><img src="/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/leetcode_3_2.png" alt="原理"></div>
-
-<p><strong><code>利用HashMap实现：</code></strong><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(N)  </span></span><br><span class="line">    <span class="keyword">public</span> int lengthOfLongestSubstring(<span class="type">String</span> s) &#123;</span><br><span class="line">        int <span class="keyword">left</span> = <span class="number">0</span>, <span class="keyword">right</span> = <span class="number">0</span>;                        <span class="comment">// [left,right):存放无重复元素</span></span><br><span class="line">        <span class="type">Map</span>&lt;<span class="type">Character</span>, <span class="type">Integer</span>&gt; <span class="built_in">map</span> = new <span class="type">HashMap</span>&lt;&gt;();</span><br><span class="line">        int res = <span class="type">Integer</span>.<span class="type">MIN_VALUE</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">right</span> &lt; s.length()) &#123;</span><br><span class="line">            <span class="comment">// 如果map中不含当前元素, 将当前元素添加进map,对应频率+1,并且right往后移</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">right</span> &lt; s.length() &amp;&amp; !<span class="built_in">map</span>.containsKey(s.charAt(<span class="keyword">right</span>)))&#123;</span><br><span class="line">                <span class="built_in">map</span>.put(s.charAt(<span class="keyword">right</span>++), <span class="number">1</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;  <span class="comment">// 如果map中发现当前元素在[left,right)中已经出现过  将left对应元素频率--，left向后移动</span></span><br><span class="line">                <span class="built_in">map</span>.remove(s.charAt(<span class="keyword">left</span>++));</span><br><span class="line">            &#125;</span><br><span class="line">            res = <span class="type">Math</span>.<span class="built_in">max</span>(res, <span class="keyword">right</span> - <span class="keyword">left</span>);   <span class="comment">// 更新结果</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res == <span class="type">Integer</span>.<span class="type">MIN_VALUE</span> ? <span class="number">0</span> : res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="type">String</span>[] args) &#123;</span><br><span class="line">        <span class="type">String</span> s = <span class="string">"abcabcbb"</span>;</span><br><span class="line">        <span class="type">System</span>.out.<span class="built_in">println</span>(new <span class="type">Solution2</span>().lengthOfLongestSubstring(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong><code>不用HashMap使用哈希表</code></strong>,即<strong><code>数组</code></strong>，解法跟用hashMap的一样，只是利用的是数组来记录频率</p>
-<p><strong><code>int[26]</code></strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for Letters <strong><code>&#39;a&#39; - &#39;z&#39;</code></strong> or <strong><code>&#39;A&#39; - &#39;Z&#39;</code></strong><br><strong><code>int[128]</code></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for <strong><code>ASCII</code></strong><br><strong><code>int[256]</code></strong> &nbsp;&nbsp;&nbsp;&nbsp;  for <strong><code>Extended ASCII</code></strong></p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class Solution3 &#123;</span><br><span class="line">    <span class="comment">// 时间复杂度O(N)  空间复杂度O(M) M:字符集的长度 即声明ascii数组大小</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> lengthOfLongestSubstring(<span class="keyword">String</span> s) &#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;         <span class="comment">// [left,right)</span></span><br><span class="line">        <span class="keyword">int</span>[] ascii = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</span><br><span class="line">        <span class="keyword">int</span> res = Integer.MIN_VALUE;</span><br><span class="line">        <span class="built_in">while</span> (right &lt; s.length()) &#123;</span><br><span class="line">            <span class="built_in">if</span> (right &lt; s.length() &amp;&amp; ascii[s.charAt(right)] == <span class="number">0</span>) &#123;</span><br><span class="line">                ascii[s.charAt(right++)]++;</span><br><span class="line">            &#125; <span class="built_in">else</span> &#123;</span><br><span class="line">                ascii[s.charAt(left++)]--;</span><br><span class="line">            &#125;</span><br><span class="line">            res = Math.<span class="built_in">max</span>(res, right - left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> res == Integer.MIN_VALUE ? <span class="number">0</span> : res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        <span class="keyword">String</span> s = <span class="string">"abcabcbb"</span>;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="keyword">new</span> Solution3().lengthOfLongestSubstring(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/3.%20Longest%20Substring%20Without%20Repeating%20Characters" target="_blank" rel="noopener">源代码链接</a></p>
-</blockquote>
+<h2 id="方法1：穿针引线"><a href="#方法1：穿针引线" class="headerlink" title="方法1：穿针引线"></a>方法1：穿针引线</h2><p>跟leetcode第92. Reverse Linked List II:<a href="https://leetcode.com/problems/reverse-linked-list-ii/description/" target="_blank" rel="noopener">题目链接</a></p>
 
       
     </div>
@@ -353,13 +336,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/">leetcode 3 Longest Substring Without Repeating Characters</a></p>
+        <p><span>本文标题:</span><a href="/2018/10/11/25-Reverse-Nodes-in-k-Group/">25. Reverse Nodes in k-Group</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
-        <p><span>发布时间:</span>2018-08-22, 15:24:00</p>
-        <p><span>最后更新:</span>2018-08-22, 16:37:22</p>
+        <p><span>发布时间:</span>2018-10-11, 16:22:38</p>
+        <p><span>最后更新:</span>2018-10-11, 16:45:23</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/" title="leetcode 3 Longest Substring Without Repeating Characters">https://xerdemo.github.io/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/10/11/25-Reverse-Nodes-in-k-Group/" title="25. Reverse Nodes in k-Group">https://xerdemo.github.io/2018/10/11/25-Reverse-Nodes-in-k-Group/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2018/10/11/25-Reverse-Nodes-in-k-Group/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -371,16 +354,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/24/LeetCode解题/01-Array/leetcode-438-Find-All-Anagrams-in-a-String/">
-                    leetcode 438 Find All Anagrams in a String
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/21/LeetCode解题/01-Array/leetcode-209-Minimum-Size-Subarray-Sum/">
-                    leetcode 209 Minimum Size Subarray Sum
+                <a href="/2018/10/09/24-Swap-Nodes-in-Pairs/">
+                    24. Swap Nodes in Pairs
                 </a>
             </div>
         
@@ -392,7 +369,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1：暴力解法"><span class="toc-number">1.</span> <span class="toc-text">方法1：暴力解法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2：双指针之滑动窗口"><span class="toc-number">2.</span> <span class="toc-text">方法2：双指针之滑动窗口</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1：穿针引线"><span class="toc-number">1.</span> <span class="toc-text">方法1：穿针引线</span></a></li></ol>
         
     </div>
     <style>
@@ -428,7 +405,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"leetcode 3 Longest Substring Without Repeating Characters　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"25. Reverse Nodes in k-Group　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -444,7 +421,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/" data-title="leetcode 3 Longest Substring Without Repeating Characters" data-url="https://xerdemo.github.io/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/10/11/25-Reverse-Nodes-in-k-Group/" data-title="25. Reverse Nodes in k-Group" data-url="https://xerdemo.github.io/2018/10/11/25-Reverse-Nodes-in-k-Group/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -467,15 +444,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/24/LeetCode解题/01-Array/leetcode-438-Find-All-Anagrams-in-a-String/" title="上一篇: leetcode 438 Find All Anagrams in a String">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/21/LeetCode解题/01-Array/leetcode-209-Minimum-Size-Subarray-Sum/" title="下一篇: leetcode 209 Minimum Size Subarray Sum">
+            <a href="/2018/10/09/24-Swap-Nodes-in-Pairs/" title="下一篇: 24. Swap Nodes in Pairs">
                 <i class="fa fa-angle-right"></i>
             </a>
         

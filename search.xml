@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>25. Reverse Nodes in k-Group</title>
+      <link href="/2018/10/11/25-Reverse-Nodes-in-k-Group/"/>
+      <url>/2018/10/11/25-Reverse-Nodes-in-k-Group/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="25"><li>Reverse Nodes in k-Group:<a href="https://leetcode.com/problems/reverse-nodes-in-k-group/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1：穿针引线"><a href="#方法1：穿针引线" class="headerlink" title="方法1：穿针引线"></a>方法1：穿针引线</h2><p>跟leetcode第92. Reverse Linked List II:<a href="https://leetcode.com/problems/reverse-linked-list-ii/description/" target="_blank" rel="noopener">题目链接</a></p>]]></content>
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C实现 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>24. Swap Nodes in Pairs</title>
       <link href="/2018/10/09/24-Swap-Nodes-in-Pairs/"/>
       <url>/2018/10/09/24-Swap-Nodes-in-Pairs/</url>
@@ -215,7 +238,7 @@
       <title>92. Reverse Linked List II</title>
       <link href="/2018/10/04/92-Reverse-Linked-List-II/"/>
       <url>/2018/10/04/92-Reverse-Linked-List-II/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="92"><li>Reverse Linked List II:<a href="https://leetcode.com/problems/reverse-linked-list-ii/description/" target="_blank" rel="noopener">题目链接</a></li></ol><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>* reverseBetween(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>* head, int m, int n) &#123;</span><br><span class="line">    <span class="keyword">if</span> (NULL == head || m &gt; n) &#123;</span><br><span class="line">        <span class="keyword">return</span> NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (m == n) &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>* dummy = (<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>* )malloc(<span class="keyword">sizeof</span>(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>));    <span class="comment">// 设头结点</span></span><br><span class="line">    dummy-&gt;next = head;</span><br><span class="line">    int i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 假设：1 -&gt; 2  -&gt; 3  -&gt; 4  -&gt; 5    m = 1, n = 2  不设头结点 要找到1的前驱 pre只能从head开始</span></span><br><span class="line">    <span class="comment">// 不能等于null否则pre-&gt;next无效，无法后移  即 pre = 1 、start = 1 、 end = 2</span></span><br><span class="line">    <span class="comment">// 为了在m=1时统一操作就跟单链表的插入删除一样  加上头结点</span></span><br><span class="line">    <span class="comment">// dummy -&gt; 1 -&gt; 2  -&gt; 3  -&gt; 4  -&gt; 5    m = 1, n = 2</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>* pre = dummy;</span><br><span class="line">    <span class="keyword">while</span> (pre &amp;&amp; i &lt; m-<span class="number">1</span>) &#123;</span><br><span class="line">        pre = pre-&gt;next;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (NULL == pre) &#123;</span><br><span class="line">        <span class="keyword">return</span> NULL;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>* start = pre-&gt;next;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>* end = NULL;</span><br><span class="line">    <span class="keyword">while</span> (start &amp;&amp; i &lt; n-<span class="number">1</span>) &#123;</span><br><span class="line">        end = start-&gt;next;</span><br><span class="line">        start-&gt;next = end-&gt;next;</span><br><span class="line">        end-&gt;next = pre-&gt;next;  <span class="comment">// 注意这里不要写成了end-&gt;next = start</span></span><br><span class="line">        pre-&gt;next = end;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="92"><li>Reverse Linked List II:<a href="https://leetcode.com/problems/reverse-linked-list-ii/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1：穿针引线"><a href="#方法1：穿针引线" class="headerlink" title="方法1：穿针引线"></a>方法1：穿针引线</h2><ul><li>pre:指向[m, n]这段链表之前的一个节点</li><li>curNode: 当前指向的节点  简称c</li><li>nextNode: 当前指向的下一个节点    简称n</li></ul><p><strong><code>基本思想：</code></strong>先找到m节点的前驱pre所在的位置，每次将curNode放在nextNode的后面，将nextNode放在pre的后面 如下所示<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">m = <span class="number">2</span>， n = <span class="number">4</span> 将[m,n]的元素逆转</span><br><span class="line"></span><br><span class="line">初始： dummyHead --&gt; <span class="number">1</span> --&gt; <span class="number">2</span> --&gt; <span class="number">3</span> --&gt; <span class="number">4</span> --&gt; <span class="number">5</span></span><br><span class="line">                    pre   c     n</span><br><span class="line"></span><br><span class="line">一次： dummyHead --&gt; <span class="number">1</span> --&gt; <span class="number">3</span> --&gt; <span class="number">2</span> --&gt; <span class="number">4</span> --&gt; <span class="number">5</span></span><br><span class="line">                    pre         c     n</span><br><span class="line"></span><br><span class="line">二次： dummyHead --&gt; <span class="number">1</span> --&gt; <span class="number">4</span> --&gt; <span class="number">3</span> --&gt; <span class="number">2</span> --&gt; <span class="number">5</span></span><br><span class="line">                    pre               c     n</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意在这里我只需要提前遍历一趟链表找到m前驱的位置并不需要找去n的位置，进而找到m的位置然后在做n-m次图示操作就行</span></span><br></pre></td></tr></table></figure></p><p><strong><code>AC代码:</code></strong><br><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(N)   空间复杂度O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *reverseBetween(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *head, int m, int n) &#123;</span><br><span class="line">    <span class="comment">// 假设：1 -&gt; 2  -&gt; 3  -&gt; 4  -&gt; 5    m = 1, n = 2  不设头结点 要找到1的前驱 pre只能从head开始</span></span><br><span class="line">    <span class="comment">// 不能等于null否则pre-&gt;next无效，无法后移  即 pre = 1 、start = 1 、 end = 2</span></span><br><span class="line">    <span class="comment">// 为了在m=1时统一操作就跟单链表的插入删除一样  加上头结点</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *dummyHead = (<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *) malloc(<span class="keyword">sizeof</span>(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>));</span><br><span class="line">    dummyHead-&gt;next = head;</span><br><span class="line">    <span class="keyword">if</span>(m == n)&#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *pre = dummyHead, *curNode = NULL, *nextNode = NULL;</span><br><span class="line">    int i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (pre != NULL &amp;&amp; i &lt; m - <span class="number">1</span>) &#123;                <span class="comment">// 找到pre的位置</span></span><br><span class="line">        pre = pre-&gt;next;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (NULL == pre) &#123;</span><br><span class="line">        <span class="keyword">return</span> NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    curNode = pre-&gt;next;                              <span class="comment">// 确定curNode的位置</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n - m &amp;&amp; curNode != NULL; ++i) &#123;  <span class="comment">// 开始reverse</span></span><br><span class="line">        printf(<span class="string">"aaaa\n"</span>);</span><br><span class="line">        nextNode = curNode-&gt;next;</span><br><span class="line">        curNode-&gt;next = nextNode-&gt;next;</span><br><span class="line">        nextNode-&gt;next = pre-&gt;next;                   <span class="comment">// 注意这里不要写成了nextNode&gt;next = curNode</span></span><br><span class="line">        pre-&gt;next = nextNode;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummyHead-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/92.%20Reverse%20Linked%20List%20II" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
       
       <categories>
           
@@ -791,9 +814,9 @@
       
         <tags>
             
-            <tag> java实现 </tag>
-            
             <tag> 二分查找 </tag>
+            
+            <tag> java实现 </tag>
             
             <tag> 数组问题 </tag>
             
@@ -1153,16 +1176,16 @@
   
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
