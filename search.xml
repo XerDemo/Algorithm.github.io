@@ -6,8 +6,22 @@
       <title>19. Remove Nth Node From End of List</title>
       <link href="/2018/10/20/19-Remove-Nth-Node-From-End-of-List/"/>
       <url>/2018/10/20/19-Remove-Nth-Node-From-End-of-List/</url>
-      <content type="html"><![CDATA[]]></content>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><ol start="19"><li>Remove Nth Node From End of List:<a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/" target="_blank" rel="noopener">题目链接</a></li></ol><h2 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h2><p><strong><code>基本思想：</code></strong> 指针p，q指向头节点，将q往后移动k位，当q不为空时，p，q同时往后移，当q为空时，此时p在倒数第k位上</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">假设k = <span class="number">2</span></span><br><span class="line">        dummyHead -&gt; <span class="number">1</span> -&gt; <span class="number">2</span> -&gt; <span class="number">3</span> -&gt; <span class="number">4</span> -&gt; <span class="number">5</span> -&gt; NULL</span><br><span class="line">初始：     p、q</span><br><span class="line">q移k位:     <span class="selector-tag">p</span>           q</span><br><span class="line">只要q不空，p、q后移    <span class="selector-tag">p</span>          q</span><br><span class="line">                          <span class="selector-tag">p</span>         q</span><br><span class="line">                                <span class="selector-tag">p</span>        q</span><br><span class="line">此时p就在倒数第k位                    <span class="selector-tag">p</span>          q</span><br></pre></td></tr></table></figure><p><strong><code>AC代码：</code></strong><br><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(n)  空间O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>* removeNthFromEnd(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>* head, int n) &#123;</span><br><span class="line">    <span class="keyword">if</span> (head == NULL || n &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> * dummyHead = (<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> *) malloc (<span class="keyword">sizeof</span>(<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span>));</span><br><span class="line">    dummyHead-&gt;next = head;</span><br><span class="line"></span><br><span class="line">    int i = <span class="number">0</span>;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span> * p = dummyHead, *q = dummyHead, *pre = dummyHead;</span><br><span class="line">    <span class="comment">// 找到q的位置</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; n &amp;&amp; q) &#123;</span><br><span class="line">        q = q-&gt;next;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// q不空p、q同时后移 pre是p的前驱</span></span><br><span class="line">    <span class="keyword">while</span> (q != NULL) &#123;</span><br><span class="line">        pre = p;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        q = q-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pre-&gt;next = p-&gt;next;</span><br><span class="line">    free(p);</span><br><span class="line">    p = NULL;</span><br><span class="line">    <span class="keyword">return</span> dummyHead-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><blockquote><p><strong><code>pS:</code></strong>&nbsp;<a href="https://github.com/XerDemo/Algorithm-Tour/tree/master/LeetCode%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95/19.%20Remove%20Nth%20Node%20From%20End%20of%20List" target="_blank" rel="noopener">源代码链接</a></p></blockquote>]]></content>
       
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C实现 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -848,9 +862,9 @@
             
             <tag> java实现 </tag>
             
-            <tag> 数组问题 </tag>
-            
             <tag> 二分查找 </tag>
+            
+            <tag> 数组问题 </tag>
             
             <tag> 双指针之对撞指针 </tag>
             
@@ -1208,16 +1222,16 @@
   
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
