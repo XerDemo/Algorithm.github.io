@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="XerDemo" />
+
+
+
+<meta name="description" content="本文将介绍插入排序">
+<meta name="keywords" content="堆,堆排序,优先队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="堆与堆排序和优先队列">
+<meta property="og:url" content="https://xerdemo.github.io/2019/06/02/堆与堆排序和优先队列/index.html">
+<meta property="og:site_name" content="The beauty of programming">
+<meta property="og:description" content="本文将介绍插入排序">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://xerdemo.github.io/2019/06/02/堆与堆排序和优先队列/数组存储最大堆.png">
+<meta property="og:image" content="https://xerdemo.github.io/2019/06/02/堆与堆排序和优先队列/数组表示2.png">
+<meta property="og:updated_time" content="2019-06-20T13:02:10.208Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="堆与堆排序和优先队列">
+<meta name="twitter:description" content="本文将介绍插入排序">
+<meta name="twitter:image" content="https://xerdemo.github.io/2019/06/02/堆与堆排序和优先队列/数组存储最大堆.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="The beauty of programming" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>堆与堆排序和优先队列 | The beauty of programming</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">XerDemo</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/1492113422@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa V2EX" href="#" title="V2EX"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" href="/jianshu" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="/" title="CSDN"></a>
+                            
+                                <a class="fa Coding" href="/" title="Coding"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Search-Tree/">Binary Search Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C实现/">C实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-Table/">Hash Table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Queue/">Queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursion/">Recursion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive/">Recursive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack/">Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking/">Thinking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java实现/">java实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursive/">recursive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/三路快速排序/">三路快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分搜索/">二分搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分查找/">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二路快速排序/">二路快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优先队列/">优先队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冒泡排序/">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分治法/">分治法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分治法，快速排序/">分治法，快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/双指针/">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/双指针之对撞指针/">双指针之对撞指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/双指针之快慢指针/">双指针之快慢指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/双指针之滑动窗口/">双指针之滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/堆/">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/堆排序/">堆排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/备份/">备份</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/归并排序/">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组问题/">数组问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/直接插入排序/">直接插入排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计数排序/">计数排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/选择排序/">选择排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">XerDemo</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">XerDemo</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/1492113422@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa V2EX" target="_blank" href="#" title="V2EX"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="/jianshu" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="/" title="CSDN"></a>
+                            
+                                <a class="fa Coding" target="_blank" href="/" title="Coding"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-堆与堆排序和优先队列" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/06/02/堆与堆排序和优先队列/" class="article-date">
+      <time datetime="2019-06-02T13:51:47.000Z" itemprop="datePublished">2019-06-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      堆与堆排序和优先队列
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/优先队列/">优先队列</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/堆/">堆</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/堆排序/">堆排序</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>本文将介绍插入排序<a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><ul>
+<li><p><font style="font-weight: bold; color: #FF0000;">最大堆？最小堆？</font><br><strong><code>最大堆</code></strong>:堆中每个节点的值 <strong><code>&gt;=</code></strong> 子节点的值<br><strong><code>最小堆</code></strong>:堆中每个节点的值 <strong><code>&lt;=</code></strong> 子节点的值 </p>
+</li>
+<li><font style="font-weight: bold; color: #FF0000;">堆总是一颗完全二叉树 </font>
+
+
+</li>
+</ul>
+<ul>
+<li><font style="font-weight: bold; color: #FF0000;">为什么用数组来实现堆？</font><br>二叉堆是一个完全二叉树  把完全二叉树编号后 编号就可以对应数组中的索引<br>如果从<strong><code>1</code></strong>开始编号，<strong><code>父节点 = 当前节点索引 / 2</code></strong> , <strong><code>左孩子 = 当前节点索引 * 2</code></strong>, <strong><code>右孩子 = 当前节点索引 *2 + 1</code></strong><br>从<strong><code>1</code></strong>开始编号，用数组来表示一颗完全二叉树，<font style="font-weight: bold; color: #FF0000;">最后一个非叶子节点索引：</font><strong><code>最后一个节点索引/2</code></strong>，</li>
+</ul>
+<div align="left" style="zoom: 55%; margin:  0px auto;"><img src="/2019/06/02/堆与堆排序和优先队列/数组存储最大堆.png" alt="原理"></div> 
+
+<p>如果从<strong><code>0</code></strong>开始编号，<strong><code>父节点 = （当前节点索引-1） / 2</code></strong> , <strong><code>左孩子 = 当前节点索引 * 2 + 1</code></strong>, <strong><code>右孩子 = 当前节点索引 *2 + 2</code></strong><br>从<strong><code>0</code></strong>开始编号，用数组来表示一颗完全二叉树，<font style="font-weight: bold; color: #FF0000;">最后一个非叶子节点索引：</font><strong><code>(最后一个节点索引-1)/2</code></strong>，</p>
+<div align="left" style="zoom: 55%; margin:  0px auto;"><img src="/2019/06/02/堆与堆排序和优先队列/数组表示2.png" alt="原理"></div> 
+
+
+
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 100   <span class="comment">// 堆的容量 可以用动态数组来扩充</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 最大堆的定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> data[MAXSIZE];</span><br><span class="line">    <span class="keyword">int</span> size;         <span class="comment">// 堆中元素个数</span></span><br><span class="line">&#125; MaxHeap;</span><br></pre></td></tr></table></figure>
+<h3 id="建堆-核心：heapify-O-logN"><a href="#建堆-核心：heapify-O-logN" class="headerlink" title="建堆 核心：heapify O(logN)"></a>建堆 核心：heapify O(logN)</h3><iframe width="993" height="506" src="https://www.youtube.com/embed/UWyqMFUyn14" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>heapify:<font style="font-weight: bold; color: #FF0000;">将任意数组整理成堆的形状</font><br>优化：如果将个元素逐个插入到一个空堆中，这样建堆 复杂度为<strong><code>O(NlogN)</code></strong>,heapify的过程，算法复杂度为<strong><code>O(N)</code></strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// heapify:将任意数组整理成堆的形状 将每个节点都符合最大堆的性质</span></span><br><span class="line"><span class="comment">//         因为叶节点本身没有子节点所以符合最大堆的性质，只需从最后一个非叶子节点到堆顶节点，依次将每个节点堆化</span></span><br><span class="line"><span class="comment">// 注意：heapfiy之后数组中元素并不是从大到小的顺序</span></span><br><span class="line"><span class="function">MaxHeap *<span class="title">buildHeap</span><span class="params">(<span class="keyword">int</span> *arr, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化堆 并且 对堆进行赋值</span></span><br><span class="line">    <span class="comment">/*** 堆中元素 ∈ [0,size-1] ***/</span></span><br><span class="line">    MaxHeap *heap = (MaxHeap *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(MaxHeap));</span><br><span class="line">    heap-&gt;size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        heap-&gt;data[i] = arr[i];</span><br><span class="line">        heap-&gt;size++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//  heapfiy:最后一个节点的索引为size-1，因为数组从0开始，所以最后一个非叶子节点索引(size-1-1)/2</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = (heap-&gt;size - <span class="number">2</span>) / <span class="number">2</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        shiftDown(heap, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> heap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="插入-核心：shiftUp-O-logN"><a href="#插入-核心：shiftUp-O-logN" class="headerlink" title="插入 核心：shiftUp O(logN)"></a>插入 核心：shiftUp O(logN)</h3><iframe width="955" height="506" src="https://www.youtube.com/embed/jdgK72u2K1A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><strong><code>基本思想：</code></strong>先将节点插入堆中，然后通过shiftUp操作将该节点放在满足最大堆性质的位置<br><strong><code>shiftUp:</code></strong>将待调整节点与其父节点比较，如果待调整节点比其父节点大，交换两者位置，待调整节点继续与其新父节点比较，如果遇到待调整节点 &lt;= 父亲节点，说明满足最大堆的性质，否则一直执行此过程</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">shiftUp</span><span class="params">(MaxHeap *heap, <span class="keyword">int</span> idx)</span> </span>&#123;</span><br><span class="line"><span class="comment">//    // idx &gt;= 1 代码上讲防止了数组越界</span></span><br><span class="line"><span class="comment">//    // 实际意义：idx=0是堆顶元素 其子节点idx要么是1(左孩子)要么是2(右孩子),在idx=2或1的时候已经和堆顶元素进行了比较</span></span><br><span class="line"><span class="comment">//    while (idx &gt;= 1 &amp;&amp; heap-&gt;data[idx] &gt; heap-&gt;data[(idx - 1) / 2]) &#123; // 待调整节点比其父节点大，交换两者位置</span></span><br><span class="line"><span class="comment">//        swap(heap-&gt;data, idx, (idx - 1) / 2);</span></span><br><span class="line"><span class="comment">//        idx = (idx - 1) / 2; // 更新待调整节点 在堆中的位置</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 优化：减少赋值次数 交换时需要3次赋值，执行一次swap，赋值3^n</span></span><br><span class="line">    <span class="keyword">int</span> temp = heap-&gt;data[idx];</span><br><span class="line">    <span class="keyword">while</span> (idx &gt;= <span class="number">1</span> &amp;&amp; temp &gt; heap-&gt;data[(idx - <span class="number">1</span>) / <span class="number">2</span>]) &#123; <span class="comment">// 待调整节点比其父节点大，交换两者位置</span></span><br><span class="line">        heap-&gt;data[idx] = heap-&gt;data[(idx - <span class="number">1</span>) / <span class="number">2</span>];</span><br><span class="line">        idx = (idx - <span class="number">1</span>) / <span class="number">2</span>; <span class="comment">// 更新待调整节点 在堆中的位置</span></span><br><span class="line">    &#125;</span><br><span class="line">    heap-&gt;data[idx] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="删除-核心：shiftDown-O-logN"><a href="#删除-核心：shiftDown-O-logN" class="headerlink" title="删除 核心：shiftDown O(logN)"></a>删除 核心：shiftDown O(logN)</h3><iframe width="970" height="506" src="https://www.youtube.com/embed/iorTuDj4BA0?list=UUuvYGFPMTl-fAfNz1FwhU5g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><strong><code>基本思想：</code></strong>将最后一个元素与堆顶元素互换，此时新的堆顶元素不一定符合最大堆的性质，对其进行shiftDown<br><strong><code>shiftDown:</code></strong>将当前元素与自己的左右孩子中最大的那个比较，如果比最大的孩子小，交换两者位置,继续与新的左右孩子比较，直到大于等于左右孩子中最大的，此时符合最大堆的性质</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 向最大堆中取出堆顶元素 即堆中的最大元素 O(logN)</span></span><br><span class="line"><span class="comment">// 基本思想：将最后一个元素与堆顶元素互换，此时新的堆顶元素不一定符合最大堆的性质，对其进行shiftDown</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">entractMax</span><span class="params">(MaxHeap *heap)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (heap-&gt;size &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"堆中没有元素.\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> max = heap-&gt;data[<span class="number">0</span>];   <span class="comment">// 堆顶元素</span></span><br><span class="line"><span class="comment">//	printf("出堆元素: %d \n", max);</span></span><br><span class="line">    swap(heap-&gt;data, <span class="number">0</span>, heap-&gt;size - <span class="number">1</span>); <span class="comment">// 将堆顶元素与堆中最后一个元素互换  堆中元素存在[0,size-1]中，起到了删除堆顶元素的作用</span></span><br><span class="line">    heap-&gt;size--;  <span class="comment">// 更新size</span></span><br><span class="line">    shiftDown(heap, <span class="number">0</span>);  <span class="comment">// 让调整新的堆顶元素 使其符合最大堆性质</span></span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下沉操作 调整索引为idx的节点，使其符合最大堆性质</span></span><br><span class="line"><span class="comment">// 基本思想：将当前元素与自己的左右孩子中最大的那个比较，如果比最大的孩子小，交换两者位置</span></span><br><span class="line"><span class="comment">// 继续与新的左右孩子比较，直到大于等于左右孩子中最大的，此时符合最大堆的性质</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">shiftDown</span><span class="params">(MaxHeap *heap, <span class="keyword">int</span> idx)</span> </span>&#123;</span><br><span class="line"><span class="comment">//    while (idx * 2 + 1 &lt;= heap-&gt;size - 1) &#123; // 左孩子 = idx *2 +1 如果在堆中  [0,size-1]</span></span><br><span class="line"><span class="comment">////        int j = idx * 2 + 1;</span></span><br><span class="line"><span class="comment">////        // 如果有右孩子 并且右孩子比左孩子大</span></span><br><span class="line"><span class="comment">////        if (j + 1 &lt;= heap-&gt;size - 1 &amp;&amp; heap-&gt;data[j + 1] &gt; heap-&gt;data[j]) &#123;</span></span><br><span class="line"><span class="comment">////            j = j + 1; // 更新j为右孩子的索引</span></span><br><span class="line"><span class="comment">////        &#125;</span></span><br><span class="line"><span class="comment">////        if (heap-&gt;data[idx] &gt;= heap-&gt;data[j]) &#123; //  待调节点 &gt;= 左右孩子最大</span></span><br><span class="line"><span class="comment">////            break; // 满足最大堆性质 结束</span></span><br><span class="line"><span class="comment">////        &#125;</span></span><br><span class="line"><span class="comment">////        swap(heap-&gt;data, idx, j); // 交换待调节点与其左右孩子最大的</span></span><br><span class="line"><span class="comment">////        idx = j; // 更新待调节点为 左右孩子最大的</span></span><br><span class="line"><span class="comment">////    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 优化：减少赋值次数 交换时需要3次赋值，执行一次swap，赋值3^n</span></span><br><span class="line">    <span class="keyword">int</span> temp = heap-&gt;data[idx];</span><br><span class="line">    <span class="keyword">while</span> (idx * <span class="number">2</span> + <span class="number">1</span> &lt;= heap-&gt;size - <span class="number">1</span>) &#123; <span class="comment">// 左孩子 = idx *2 +1 如果在堆中  [0,size-1]</span></span><br><span class="line">        <span class="keyword">int</span> j = idx * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 如果有右孩子 并且右孩子比左孩子大</span></span><br><span class="line">        <span class="keyword">if</span> (j + <span class="number">1</span> &lt;= heap-&gt;size - <span class="number">1</span> &amp;&amp; heap-&gt;data[j + <span class="number">1</span>] &gt; heap-&gt;data[j]) &#123;</span><br><span class="line">            j = j + <span class="number">1</span>; <span class="comment">// 更新j为右孩子的索引</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (temp &gt;= heap-&gt;data[j]) &#123; <span class="comment">//  待调节点 &gt;= 左右孩子最大</span></span><br><span class="line">            <span class="keyword">break</span>; <span class="comment">// 满足最大堆性质 结束</span></span><br><span class="line">        &#125;</span><br><span class="line">        heap-&gt;data[idx] = heap-&gt;data[j];</span><br><span class="line">        idx = j; <span class="comment">// 更新待调节点为 左右孩子最大的</span></span><br><span class="line">    &#125;</span><br><span class="line">    heap-&gt;data[idx] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="一些其他操作"><a href="#一些其他操作" class="headerlink" title="一些其他操作"></a>一些其他操作</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取最大堆顶元素 即整个堆中最大的元素</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getHeadTop</span><span class="params">(MaxHeap *heap)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (heap-&gt;size &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"堆中没有元素."</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-9999999</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> heap-&gt;data[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取出堆中的最大元素，并且替换成元素e</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">replace</span><span class="params">(MaxHeap *heap, <span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max = heap-&gt;data[<span class="number">0</span>]; <span class="comment">// 堆中最大元素</span></span><br><span class="line">    heap-&gt;data[<span class="number">0</span>] = e; <span class="comment">// 修改堆顶元素</span></span><br><span class="line">    shiftDown(heap, <span class="number">0</span>); <span class="comment">// 修改后堆顶元素不一定满足最大堆性质</span></span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="原地堆排序"><a href="#原地堆排序" class="headerlink" title="原地堆排序"></a>原地堆排序</h2><iframe width="970" height="506" src="https://www.youtube.com/embed/kSNDFNsDq7Y?list=UUuvYGFPMTl-fAfNz1FwhU5g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><strong><code>基本思想：</code></strong>首先将待排序数组heapfiy，即数组中每个元素都满足最大堆的性质<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h2 id="堆的应用-优先队列"><a href="#堆的应用-优先队列" class="headerlink" title="堆的应用-优先队列"></a>堆的应用-优先队列</h2><ol>
+<li><font style="font-weight: bold; color: #FF0000;">优先队列与普通队列的区别？</font><br>普通队列：先进先出，后进后出<br>优先队列：出队顺序和入队顺序无关，和<strong><code>优先级有关</code></strong></li>
+</ol>
+<ol start="2">
+<li><p><font style="font-weight: bold; color: #FF0000;">为什么使用优先队列？</font><br><strong><code>动态</code></strong> 的选择优先级最高的任务<br>在N个元素中选出前M个元素，快排，归并等都是NlogN ,使用优先队列NlogM</p>
+</li>
+<li><font style="font-weight: bold; color: #FF0000;">优先队列可以用什么实现？</font>
+
+
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">入队</th>
+<th style="text-align:left">出队</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">普通数组</td>
+<td style="text-align:center"><strong><code>O(1)</code></strong></td>
+<td style="text-align:left"><strong><code>O(N)</code></strong> 出队时遍历数组找出优先级最高的</td>
+</tr>
+<tr>
+<td style="text-align:center">有序数组</td>
+<td style="text-align:center"><strong><code>O(N)</code></strong> 入队时需要遍历一遍数组，插入适合的位置</td>
+<td style="text-align:left"><strong><code>O(1)</code></strong> 优先级从大到小</td>
+</tr>
+<tr>
+<td style="text-align:center">堆</td>
+<td style="text-align:center"><strong><code>O(logN)</code></strong> 完全二叉树</td>
+<td style="text-align:left"><strong><code>O(logN)</code></strong> 完全二叉树</td>
+</tr>
+</tbody>
+</table>
+</the>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/06/02/堆与堆排序和优先队列/">堆与堆排序和优先队列</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">XerDemo</a></p>
+        <p><span>发布时间:</span>2019-06-02, 21:51:47</p>
+        <p><span>最后更新:</span>2019-06-20, 21:02:10</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/02/堆与堆排序和优先队列/" title="堆与堆排序和优先队列">https://xerdemo.github.io/2019/06/02/堆与堆排序和优先队列/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://xerdemo.github.io/2019/06/02/堆与堆排序和优先队列/　　作者: XerDemo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/02/16/leetcode-236-Lowest-Common-Ancestor-of-a-Binary-Tree/">
+                    leetcode 236. Lowest Common Ancestor of a Binary Tree
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#堆"><span class="toc-number">1.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化"><span class="toc-number">1.1.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建堆-核心：heapify-O-logN"><span class="toc-number">1.2.</span> <span class="toc-text">建堆 核心：heapify O(logN)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入-核心：shiftUp-O-logN"><span class="toc-number">1.3.</span> <span class="toc-text">插入 核心：shiftUp O(logN)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除-核心：shiftDown-O-logN"><span class="toc-number">1.4.</span> <span class="toc-text">删除 核心：shiftDown O(logN)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些其他操作"><span class="toc-number">1.5.</span> <span class="toc-text">一些其他操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原地堆排序"><span class="toc-number">2.</span> <span class="toc-text">原地堆排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆的应用-优先队列"><span class="toc-number">3.</span> <span class="toc-text">堆的应用-优先队列</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"堆与堆排序和优先队列　| The beauty of programming　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2019/06/02/堆与堆排序和优先队列/" data-title="堆与堆排序和优先队列" data-url="https://xerdemo.github.io/2019/06/02/堆与堆排序和优先队列/"></div>
+    <script>
+        var duoshuoQuery = {short_name:""};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/02/16/leetcode-236-Lowest-Common-Ancestor-of-a-Binary-Tree/" title="下一篇: leetcode 236. Lowest Common Ancestor of a Binary Tree">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/堆与堆排序和优先队列/">堆与堆排序和优先队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/16/leetcode-236-Lowest-Common-Ancestor-of-a-Binary-Tree/">leetcode 236. Lowest Common Ancestor of a Binary Tree</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/15/leetcode-230-Kth-Smallest-Element-in-a-BST/">leetcode 230. Kth Smallest Element in a BST</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/leetcode-107-Binary-Tree-Level-Order-Traversal-II/">leetcode 107. Binary Tree Level Order Traversal II</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/leetcode-98-Validate-Binary-Search-Tree/">leetcode 98. Validate Binary Search Tree</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/13/leetcode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/">leetcode 235. Lowest Common Ancestor of a Binary Search Tree</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/12/leetcode-113-Path-Sum-II/">leetcode 113. Path Sum II</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/12/leetcode-257-Binary-Tree-Paths/">leetcode 257. Binary Tree Paths</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/12/leetcode-101-Symmetric-Tree/">leetcode 101. Symmetric Tree</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/11/leetcode-404-Sum-of-Left-Leaves/">leetcode 404. Sum of Left Leaves</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/11/leetcode-112-Path-Sum/">leetcode 112. Path Sum</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/11/leetcode-100-Same-Tree/">leetcode 100. Same Tree</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/11/226-Invert-Binary-Tree/">226. Invert Binary Tree</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/11/662-Maximum-Width-of-Binary-Tree/">662. Maximum Width of Binary Tree</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/10/111-Minimum-Depth-of-Binary-Tree/">111. Minimum Depth of Binary Tree</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/09/leetcode-104-Maximum-Depth-of-Binary-Tree/">leetcode 104. Maximum Depth of Binary Tree</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/01/数组链表形成栈和队列详解/">数组|链表实现及与栈和队列的关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/05/leetcode-102-Binary-Tree-Level-Order-Traversal/">leetcode 102. Binary Tree Level Order Traversal</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/栈详解/">栈详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/25/二叉搜索树C版/">二分搜索树(二叉搜索树)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/22/二叉搜索树/">二分搜索树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/18/栈与递归紧密的联系/">栈与递归紧密的联系 </a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/18/144-Binary-Tree-Preorder-Traversal/">144. Binary Tree Preorder Traversal</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/10/71-Simplify-Path/">71. Simplify Path</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/09/20-Valid-Parentheses/">20. Valid Parentheses</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/22/队列详解/">队列详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/20/19-Remove-Nth-Node-From-End-of-List/">19. Remove Nth Node From End of List</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/17/160-Intersection-of-Two-Linked-Lists/">160. Intersection of Two Linked Lists</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/25-Reverse-Nodes-in-k-Group/">25. Reverse Nodes in k-Group</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/09/24-Swap-Nodes-in-Pairs/">24. Swap Nodes in Pairs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/21-Merge-Two-Sorted-Lists/">21. Merge Two Sorted Lists</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/82-Remove-Duplicates-from-Sorted-List-II/">82. Remove Duplicates from Sorted List II</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/07/203-Remove-Linked-List-Elements/">203. Remove Linked List Elements</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/07/445-Add-Two-Numbers-II/">445. Add Two Numbers II</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/06/2-Add-Two-Numbers/">2. Add Two Numbers</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/05/328-Odd-Even-Linked-List/">328. Odd Even Linked List</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/05/86-Partition-List/">86. Partition List</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/05/83-Remove-Duplicates-from-Sorted-List/">83. Remove Duplicates from Sorted List</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/92-Reverse-Linked-List-II/">92. Reverse Linked List II</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/16/leetcode-206-Reverse-Linked-List/">leetcode 206. Reverse Linked List</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/08/leetcode-16-3Sum-closest/">leetcode 16.3Sum closest</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/LeetCode解题/01-Array/leetcode-18-4Sum/">leetcode 18. 4Sum</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/LeetCode解题/01-Array/leetcode-15-3Sum/">leetcode 15. 3Sum</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/LeetCode解题/01-Array/leetcode-1-Two-Sum/">leetcode 1. Two Sum</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/LeetCode解题/01-Array/leetcode-451-Sort-Characters-By-Frequency/">leetcode 451. Sort Characters By Frequency</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/LeetCode解题/01-Array/leetcode-205-Isomorphic-Strings/">leetcode 205. Isomorphic Strings</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/LeetCode解题/01-Array/leetcode-290-Word-Pattern/">leetcode 290. Word Pattern</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/LeetCode解题/01-Array/leetcode-202-Happy-Number/">leetcode 202. Happy Number</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/LeetCode解题/01-Array/leetcode-242-Valid-Anagram/">leetcode 242. Valid Anagram</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/01/备份win10系统/">备份win10系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/01/LeetCode解题/01-Array/leetcode-350-Intersection-of-Two-Arrays-II/">leetcode 350. Intersection of Two Arrays II</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/LeetCode解题/01-Array/leetcode-349-Intersection-of-Two-Arrays/">leetcode 349. Intersection of Two Arrays</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/双指针总结篇/">双指针总结篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/LeetCode解题/01-Array/leetcode-76-Minimum-Window-Substring/">leetcode 76 Minimum Window Substring</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/LeetCode解题/01-Array/leetcode-438-Find-All-Anagrams-in-a-String/">leetcode 438 Find All Anagrams in a String</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/22/LeetCode解题/01-Array/leetcode-3-Longest-Substring-Without-Repeating-Characters/">leetcode 3 Longest Substring Without Repeating Characters</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/LeetCode解题/01-Array/leetcode-209-Minimum-Size-Subarray-Sum/">leetcode 209 Minimum Size Subarray Sum</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/LeetCode解题/01-Array/leetcode-11-Container-With-Most-Water/">leetcode 11  Container With Most Water</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/LeetCode解题/01-Array/leetcode-345-Reverse-Vowels-of-a-String/">leetcode 345 Reverse Vowels of a String</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/20/LeetCode解题/01-Array/leetcode-344-Reverse-String/">leetcode 344 Reverse String</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/LeetCode解题/01-Array/leetcode-125-Valid-Palindrome/">leetcode 125 Valid Palindrome</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/LeetCode解题/01-Array/leetcode-167-Two-Sum-II-Input-array-is-sorted/">leetcode 167 Two Sum II - Input array is sorted</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/LeetCode解题/01-Array/leetcode-215-Kth-Largest-Element-in-an-Array/">leetcode 215 Kth Largest Element in an Array</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/LeetCode解题/01-Array/leetcode-88-Merge-Sorted-Array/">leetcode 88 Merge Sorted Array</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/LeetCode解题/01-Array/leetcode-75-Sort-Colors/">leetcode 75 Sort Colors</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/16/计数排序/">计数排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/14/LeetCode解题/01-Array/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/">leetcode 80 Remove Duplicates from Sorted Array II</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/14/LeetCode解题/01-Array/leetcode-26-Remove-Duplicates-from-Sorted-Array/">leetcode 26 Remove Duplicates from Sorted Array</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/14/LeetCode解题/01-Array/leetcode-27-Remove-Element/">leetcode 27 Remove Element</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/13/LeetCode解题/01-Array/leetcode-283-Move-Zeroes/">leetcode 283. Move Zeroes</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/31/插入排序/">插入排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/31/冒泡排序/">冒泡排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/31/选择排序/">选择排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/归并排序/">归并排序(自顶向下，自底向上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/二分查找递归与非递归形式/">二分查找递归与非递归形式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/23/快速排序实现及优化/">快速排序实现及优化</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2019 XerDemo
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
